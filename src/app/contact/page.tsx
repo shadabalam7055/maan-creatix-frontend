@@ -383,10 +383,21 @@ export default function ContactPage() {
                 <FiMail className="w-5 h-5" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest font-heading">Email Address</h3>
-                <p className="text-base font-bold text-white">hello@maancreatix.com</p>
-                <span className="text-[10px] text-slate-500 font-light block">Business & general inquiries</span>
-              </div>
+                <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest font-heading">
+                  Email Address
+                </h3>
+
+                <a
+                  href="mailto:hello@maancreatix.com"
+                  className="text-base font-bold text-white hover:text-blue-400 transition-colors duration-300 inline-block"
+                  >
+                hello@maancreatix.com
+                </a>
+
+  <span className="text-[10px] text-slate-500 font-light block">
+    Business & general inquiries
+  </span>
+</div>
             </div>
 
             {/* Card 3: Address */}
