@@ -1,26 +1,925 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #050816;
+  --foreground: #f8fafc;
+  --primary-glow: #3b82f6;
+  --secondary-glow: #8b5cf6;
+  --accent-orange: #f97316;
+  
+  --font-heading: var(--font-heading), sans-serif;
+  --font-body: var(--font-body), sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #050816;
+  color: #f8fafc;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
+
+/* Custom glow effects */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.1; /* Balanced cinematic glow */
+}
+
+.glow-blue {
+  background: radial-gradient(circle, #3b82f6 0%, rgba(59, 130, 246, 0) 70%);
+}
+
+.glow-purple {
+  background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
+}
+
+.glow-orange {
+  background: radial-gradient(circle, #f97316 0%, rgba(249, 115, 22, 0) 70%);
+}
+
+/* Glassmorphism styling */
+.glass-card {
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(4px); /* Reduced from 12px for maximum performance */
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.glass-card-hover {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  transform: translate3d(0, -4px, 0); /* GPU accelerated transform */
+}
+
+/* Custom text utility */
+.font-heading {
+  font-family: 'Syne', sans-serif;
+}
+
+.font-body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Neon animated border with 70% reduced glow shadows */
+@keyframes neonBorderGlow {
+  0%, 100% {
+    border-color: rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 2px rgba(59, 130, 246, 0.03);
+  }
+  50% {
+    border-color: rgba(139, 92, 246, 0.2);
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.06);
+  }
+}
+
+.neon-border-active {
+  animation: neonBorderGlow 4s infinite alternate;
+}
+
+/* Hardware accelerated CSS transitions/animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 15px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  will-change: opacity;
+}
+
+/* Lenis scrolling integration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Responsive Typography Clamping */
+h1 {
+  font-size: clamp(1.25rem, 4vw + 0.4rem, 4.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: clamp(1.15rem, 3vw + 0.3rem, 3rem);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h3 {
+  font-size: clamp(1.05rem, 2vw + 0.25rem, 2rem);
+  line-height: 1.3;
+}
+
+/* Global Page Hero Spacing Fix */
+#home,
+#hero,
+.hero-container,
+main > section:first-of-type,
+div:not(.admin-dashboard-container):not(.admin-login-container) > section:first-of-type,
+section.pt-36,
+section.pt-32,
+section.pt-28 {
+  padding-top: clamp(8.5rem, 11vw, 12.5rem) !important;
+  padding-bottom: clamp(4rem, 6vw, 8rem) !important;
+  min-height: auto !important;
+}
+
+/* Spacing and margins layout wrap */
+.max-w-7xl {
+  max-width: 80rem;
+  width: 100%;
+}
+
+/* Handle horizontal scrollbar leakage */
+body, html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Responsive grid improvements for laptops */
+@media (max-width: 1280px) {
+  .grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Hero Laptop Mockup Responsiveness & Scaling */
+.hero-laptop-wrapper {
+  transform: scale(0.9);
+  transform-origin: center top;
+  transition: transform 0.3s ease-out;
+}
+
+@media (max-width: 640px) {
+  .hero-laptop-wrapper {
+    transform: scale(0.85);
+    margin-bottom: -30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-laptop-wrapper {
+    transform: scale(0.75);
+    margin-bottom: -50px;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-laptop-wrapper {
+    transform: scale(0.7);
+    margin-bottom: -60px;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-laptop-wrapper {
+    transform: scale(0.62);
+    margin-bottom: -75px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-laptop-wrapper {
+    transform: scale(1);
+    margin-bottom: 0;
+  }
+}
+
+/* Breakpoints optimization */
+@media (max-width: 768px) {
+  .glow-orb {
+    filter: blur(50px) !important;
+    opacity: 0.01 !important; /* Low opacity to save GPU fill rate */
+  }
+  
+  /* Disable only float, pulse and spin animations on mobile to prevent layout thrashing */
+  .animate-float-slow,
+  .animate-float-medium,
+  .animate-float-fast,
+  .animate-pulse,
+  [class*="animate-[spin"] {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  /* Simplify fade-in-up to avoid heavy transform translations on mobile */
+  @keyframes fadeInUpMobile {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 4px, 0);
+    }
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUpMobile 0.3s ease-out forwards !important;
+    will-change: opacity, transform;
+  }
+
+  /* Globally scale down mobile typography for compact premium SaaS aesthetic */
+  .text-8xl, .text-7xl, .text-6xl, .text-5xl, .text-4xl {
+    font-size: clamp(1.25rem, 5vw + 0.1rem, 1.85rem) !important;
+    line-height: 1.15 !important;
+    letter-spacing: -0.02em !important;
+  }
+  .text-3xl {
+    font-size: clamp(1.15rem, 4vw, 1.5rem) !important;
+    line-height: 1.2 !important;
+    letter-spacing: -0.015em !important;
+  }
+  .text-2xl {
+    font-size: clamp(1.05rem, 3.5vw, 1.25rem) !important;
+    line-height: 1.25 !important;
+  }
+  .text-xl {
+    font-size: clamp(0.95rem, 3.5vw, 1.125rem) !important;
+    line-height: 1.3 !important;
+  }
+  .text-lg {
+    font-size: clamp(0.875rem, 3vw, 1rem) !important;
+    line-height: 1.35 !important;
+  }
+  .text-base {
+    font-size: 0.875rem !important; /* ~14px */
+    line-height: 1.45 !important;
+  }
+  .text-sm {
+    font-size: 0.8125rem !important; /* ~13px */
+    line-height: 1.4 !important;
+  }
+  .text-xs {
+    font-size: 0.725rem !important; /* ~11.5px */
+    line-height: 1.4 !important;
+  }
+  .text-\[10px\] {
+    font-size: 9px !important;
+  }
+  
+  /* Proper scaling for buttons on mobile */
+  button, .button, a[class*="rounded-full"], button[class*="rounded-full"] {
+    font-size: 0.75rem !important;
+  }
+
+  /* Compact glass card layout styling on mobile (excluding admin settings) */
+  div:not(.admin-dashboard-container):not(.admin-login-container) .glass-card,
+  div:not(.admin-dashboard-container):not(.admin-login-container) [class*="glass-card"] {
+    padding: 1.25rem !important;
+    border-radius: 1rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+
+  /* Keep lists left aligned inside card for readability */
+  div:not(.admin-dashboard-container):not(.admin-login-container) .glass-card ul,
+  div:not(.admin-dashboard-container):not(.admin-login-container) .glass-card ol {
+    text-align: left !important;
+    align-self: center !important;
+  }
+
+  /* Centering mobile headers and layouts for frontend */
+  div:not(.admin-dashboard-container):not(.admin-login-container) section h1,
+  div:not(.admin-dashboard-container):not(.admin-login-container) section h2,
+  div:not(.admin-dashboard-container):not(.admin-login-container) section h3,
+  div:not(.admin-dashboard-container):not(.admin-login-container) section h4,
+  div:not(.admin-dashboard-container):not(.admin-login-container) section p,
+  div:not(.admin-dashboard-container):not(.admin-login-container) section span {
+    text-align: center !important;
+  }
+
+  div:not(.admin-dashboard-container):not(.admin-login-container) .inline-flex,
+  div:not(.admin-dashboard-container):not(.admin-login-container) .inline-block {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: inline-flex !important;
+  }
+
+  div:not(.admin-dashboard-container):not(.admin-login-container) .max-w-xl {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+  }
+
+  div:not(.admin-dashboard-container):not(.admin-login-container) .flex.flex-wrap,
+  div:not(.admin-dashboard-container):not(.admin-login-container) .flex.gap-4,
+  div:not(.admin-dashboard-container):not(.admin-login-container) .flex.space-x-4 {
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  /* Section Spacing Reductions on Mobile */
+  section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+
+  /* First section offset for navbar */
+  header + main > section:first-of-type,
+  main > section:first-of-type,
+  #home,
+  #hero,
+  .hero-container,
+  div:not(.admin-dashboard-container):not(.admin-login-container) > section:first-of-type,
+  section.pt-36,
+  section.pt-32,
+  section.pt-28 {
+    padding-top: 7.5rem !important;
+    padding-bottom: 3rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .px-6, .px-12, .px-4, .p-6, .p-8 {
+    padding-left: 1.15rem !important;
+    padding-right: 1.15rem !important;
+  }
+}
+
+@media (max-width: 340px) {
+  .px-6, .px-12, .px-4, .p-6, .p-8 {
+    padding-left: 0.85rem !important;
+    padding-right: 0.85rem !important;
+  }
+}
+
+/* ==========================================
+   LIGHT MODE OVERRIDES
+   ========================================== */
+:root.light {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --primary-glow: #2563eb;
+  --secondary-glow: #7c3aed;
+  --accent-orange: #ea580c;
+}
+
+.light body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Force Light BG on section layers */
+.light main,
+.light section,
+.light footer,
+.light header,
+.light div[class*="bg-[#050816]"],
+.light section[class*="bg-[#050816]"],
+.light div[class*="bg-[#030612]"],
+.light section[class*="bg-[#030612]"],
+.light div[class*="bg-[#090d23]"],
+.light div[class*="bg-[#0b0c1e]"],
+.light div[class*="bg-[#030712]"],
+.light div[class*="bg-slate-950"] {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Light Mode Typography styling */
+.light .text-white,
+.light .text-slate-100,
+.light .text-slate-200,
+.light .text-slate-300,
+.light div[class*="text-slate-100"],
+.light span[class*="text-slate-200"],
+.light p[class*="text-slate-300"] {
+  color: #0f172a !important;
+}
+
+.light .text-slate-400,
+.light p[class*="text-slate-400"],
+.light span[class*="text-slate-400"] {
+  color: #334155 !important;
+}
+
+.light .text-slate-500,
+.light p[class*="text-slate-500"] {
+  color: #475569 !important;
+}
+
+/* Borders & Separators */
+.light .border-white\/5,
+.light .border-white\/10,
+.light .border-white\/15,
+.light .border-white\/20,
+.light div[class*="border-white"],
+.light header[class*="border-white"],
+.light footer[class*="border-white"] {
+  border-color: #e2e8f0 !important;
+}
+
+/* Glassmorphism to Soft Glass Light Cards (Apple + Linear style) */
+.light .glass-card,
+.light div[class*="glass-card"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.25) 100%) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+}
+
+.light .glass-card h1,
+.light .glass-card h2,
+.light .glass-card h3,
+.light .glass-card h4,
+.light .glass-card h5,
+.light .glass-card span {
+  color: #0f172a !important;
+}
+
+.light .glass-card p {
+  color: #334155 !important;
+}
+
+.light .glass-card-hover:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0.45) 100%) !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Interactive elements buttons */
+.light .bg-white\/5 {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+.light .bg-white\/5:hover {
+  background-color: #e2e8f0 !important;
+}
+
+.light input,
+.light textarea,
+.light select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+.light input::placeholder,
+.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Navigation Overrides */
+.light header a,
+.light header button {
+  color: #334155 !important;
+}
+
+.light header a:hover,
+.light header button:hover {
+  color: #0f172a !important;
+}
+
+.light header .text-white,
+.light header a[class*="text-white"],
+.light header span[class*="text-white"] {
+  color: #0f172a !important;
+}
+
+.light nav[class*="bg-white/5"] {
+  background-color: rgba(15, 23, 42, 0.04) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Mega dropdown & Mobile Drawer */
+.light div[class*="bg-[#050816]/95"],
+.light div[class*="bg-[#050816]"],
+.light div[class*="bg-slate-950/70"] {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.12) !important;
+  color: #0f172a !important;
+}
+
+.light div[class*="bg-[#050816]/95"] a:hover {
+  background-color: #f1f5f9 !important;
+}
+
+.light div[class*="bg-[#050816]/95"] span[class*="text-white"] {
+  color: #0f172a !important;
+}
+
+/* Secondary Buttons */
+.light a[class*="border-white/10"],
+.light button[class*="border-white/10"] {
+  border-color: #cbd5e1 !important;
+  color: #334155 !important;
+}
+
+.light a[class*="border-white/10"]:hover,
+.light button[class*="border-white/10"]:hover {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+  border-color: #94a3b8 !important;
+}
+
+/* CTA Buttons ("Let's Talk", etc.) */
+.light a[class*="bg-slate-950"],
+.light button[class*="bg-slate-950"] {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  border-color: #0f172a !important;
+}
+
+.light a[class*="bg-slate-950"]:hover,
+.light button[class*="bg-slate-950"]:hover {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #0f172a !important;
+}
+
+/* Glow ambient objects opacity reduction */
+.light .glow-orb {
+  opacity: 0.05 !important;
+  filter: blur(95px) !important;
+}
+
+/* Specific Section styles */
+.light .bg-blue-500\/5,
+.light .bg-purple-500\/5,
+.light .bg-orange-500\/5,
+.light .bg-emerald-500\/5 {
+  background-color: #f8fafc !important;
+}
+
+.light table {
+  border-color: #cbd5e1 !important;
+}
+
+.light tr {
+  border-bottom-color: #e2e8f0 !important;
+}
+
+.light th {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+.light td {
+  color: #334155 !important;
+}
+
+.light td.bg-blue-500\/\[0\.01\],
+.light td.bg-purple-500\/\[0\.01\] {
+  background-color: rgba(15, 23, 42, 0.01) !important;
+}
+
+/* Global scrollbars and overflow-x leakage fixes */
+body, html {
+  max-width: 100% !important;
+  overflow-x: hidden !important;
+}
+
+.light div[class*="border-[#050816]"] {
+  border-color: #f8fafc !important;
+}
+
+/* Custom dark backgrounds converted to premium light glass surfaces in light mode */
+.light div[class*="bg-slate-900"],
+.light div[class*="bg-slate-950"],
+.light div[class*="bg-slate-800"],
+.light div[class*="bg-slate-950/20"],
+.light div[class*="bg-[#0c0f1d]"],
+.light div[class*="bg-[#0d1530]"],
+.light div[class*="bg-[#150d30]"],
+.light div[class*="bg-[#261609]"],
+.light div[class*="bg-[#0d1530]/85"],
+.light div[class*="bg-[#150d30]/85"],
+.light div[class*="bg-[#261609]/85"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.25) 100%) !important;
+  color: #0f172a !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02) !important;
+}
+
+/* Override dark gradients in light mode to soft glowing light gradients */
+.light div[class*="from-blue-950"],
+.light div[class*="from-purple-950"],
+.light div[class*="from-slate-900"] {
+  background: linear-gradient(135deg, rgba(219, 234, 254, 0.25) 0%, rgba(243, 232, 255, 0.25) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(8px) !important;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.02) !important;
+}
+
+/* Darken colored icon indicators for better accessibility in light mode */
+.light .text-blue-400 {
+  color: #1d4ed8 !important; /* blue-700 */
+}
+.light .bg-blue-500\/10 {
+  background-color: rgba(29, 78, 216, 0.08) !important;
+}
+
+.light .text-purple-400 {
+  color: #6d28d9 !important; /* purple-700 */
+}
+.light .bg-purple-500\/10 {
+  background-color: rgba(109, 40, 217, 0.08) !important;
+}
+
+.light .text-orange-400 {
+  color: #c2410c !important; /* orange-700 */
+}
+.light .bg-orange-500\/10 {
+  background-color: rgba(194, 65, 12, 0.08) !important;
+}
+
+.light .text-emerald-400 {
+  color: #047857 !important; /* emerald-700 */
+}
+.light .bg-emerald-500\/10 {
+  background-color: rgba(4, 120, 87, 0.08) !important;
+}
+
+/* Improve button hover styling in light mode */
+.light a[class*="bg-slate-950"]:hover,
+.light button[class*="bg-slate-950"]:hover {
+  background-color: #1e293b !important;
+  color: #ffffff !important;
+  border-color: #1e293b !important;
+}
+
+/* GPU accelerated float animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes floatMedium {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+}
+
+@keyframes floatFast {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -6px, 0);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-medium {
+  animation: floatMedium 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.animate-float-fast {
+  animation: floatFast 4s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* ==========================================
+   PREMIUM SMOOTH ANIMATIONS & NAV TARGETS
+   ========================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Glowing Orb movement animation */
+@keyframes orbMovement {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(20px, -20px, 0) scale(1.05);
+  }
+}
+.glowing-orb-animated {
+  animation: orbMovement 18s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* Laptop hover/float animation */
+@keyframes floatLaptop {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.floating-laptop {
+  animation: floatLaptop 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Scroll Reveal Base Transitions */
+.reveal-fade-up {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-left {
+  opacity: 0;
+  transform: translate3d(-35px, 0, 0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-right {
+  opacity: 0;
+  transform: translate3d(35px, 0, 0);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-zoom {
+  opacity: 0;
+  transform: scale3d(0.95, 0.95, 1);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Reveal Active States */
+.reveal-fade-up.is-visible,
+.reveal-fade-left.is-visible,
+.reveal-fade-right.is-visible,
+.reveal-zoom.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+/* Stagger reveals */
+.reveal-stagger-container .reveal-stagger-item {
+  opacity: 0;
+  transform: translate3d(0, 25px, 0);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-stagger-container.is-visible .reveal-stagger-item {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.reveal-stagger-container.is-visible .reveal-stagger-item:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger-container.is-visible .reveal-stagger-item:nth-child(2) { transition-delay: 0.12s; }
+.reveal-stagger-container.is-visible .reveal-stagger-item:nth-child(3) { transition-delay: 0.19s; }
+.reveal-stagger-container.is-visible .reveal-stagger-item:nth-child(4) { transition-delay: 0.26s; }
+.reveal-stagger-container.is-visible .reveal-stagger-item:nth-child(5) { transition-delay: 0.33s; }
+.reveal-stagger-container.is-visible .reveal-stagger-item:nth-child(6) { transition-delay: 0.4s; }
+.reveal-stagger-container.is-visible .reveal-stagger-item:nth-child(7) { transition-delay: 0.47s; }
+.reveal-stagger-container.is-visible .reveal-stagger-item:nth-child(8) { transition-delay: 0.54s; }
+
+/* Custom delays for manual timing utilities */
+.delay-100 { animation-delay: 100ms !important; transition-delay: 100ms !important; }
+.delay-150 { animation-delay: 150ms !important; transition-delay: 150ms !important; }
+.delay-200 { animation-delay: 200ms !important; transition-delay: 200ms !important; }
+.delay-300 { animation-delay: 300ms !important; transition-delay: 300ms !important; }
+.delay-450 { animation-delay: 450ms !important; transition-delay: 450ms !important; }
+.delay-600 { animation-delay: 600ms !important; transition-delay: 600ms !important; }
+
+/* Premium button hover transformations */
+.premium-btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform, box-shadow;
+}
+.premium-btn-primary:hover {
+  transform: scale(1.03) translate3d(0, -1px, 0) !important;
+  box-shadow: 0 12px 30px rgba(59, 130, 246, 0.25) !important;
+}
+.premium-btn-primary:active {
+  transform: scale(0.98) !important;
+}
+
+.premium-btn-secondary {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform, background-color, border-color;
+}
+.premium-btn-secondary:hover {
+  transform: scale(1.03) translate3d(0, -1px, 0) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.premium-btn-secondary:active {
+  transform: scale(0.98) !important;
+}
+
+/* Premium Card hover styles */
+.premium-card-hover {
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  will-change: transform, box-shadow, border-color, background;
+}
+.premium-card-hover:hover {
+  transform: translate3d(0, -5px, 0) scale(1.01) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.15), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Client avatar micro hover interaction */
+.avatar-hover-trigger {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease !important;
+  will-change: transform;
+  z-index: 10;
+}
+.avatar-hover-trigger:hover {
+  transform: scale(1.2) translate3d(0, -5px, 0) !important;
+  border-color: #3b82f6 !important;
+  z-index: 50 !important;
+}
+
+/* Disabled/simplified states on mobile devices for smooth performance */
+@media (max-width: 768px) {
+  .reveal-fade-up, .reveal-fade-left, .reveal-fade-right, .reveal-zoom {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+  .reveal-stagger-container .reveal-stagger-item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    transition-delay: 0s !important;
+  }
+  .floating-laptop {
+    animation: none !important;
+    transform: none !important;
+  }
+  .glowing-orb-animated {
+    animation: none !important;
+    transform: none !important;
+  }
+  .premium-btn-primary:hover, 
+  .premium-btn-secondary:hover, 
+  .premium-card-hover:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  .avatar-hover-trigger:hover {
+    transform: none !important;
+  }
+}
+
+

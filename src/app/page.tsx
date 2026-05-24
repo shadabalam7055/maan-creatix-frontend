@@ -1,65 +1,100 @@
-import Image from "next/image";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import Services from "@/components/Services";
+import Projects from "@/components/Projects";
+import Stats from "@/components/Stats";
+import Process from "@/components/Process";
+import Pricing from "@/components/Pricing";
+import Testimonials from "@/components/Testimonials";
+import ContactForm from "@/components/ContactForm";
+import Footer from "@/components/Footer";
 
-export default function Home() {
+async function getHomeData() {
+  try {
+    const [settingsRes, projectsRes, testimonialsRes, pricingRes, servicesRes, statsRes] = await Promise.all([
+      fetch('http://127.0.0.1:8000/api/settings', { cache: 'no-store' }),
+      fetch('http://127.0.0.1:8000/api/projects', { cache: 'no-store' }),
+      fetch('http://127.0.0.1:8000/api/testimonials', { cache: 'no-store' }),
+      fetch('http://127.0.0.1:8000/api/pricing-plans', { cache: 'no-store' }),
+      fetch('http://127.0.0.1:8000/api/services', { cache: 'no-store' }),
+      fetch('http://127.0.0.1:8000/api/stats', { cache: 'no-store' }),
+    ]);
+
+    const settings = settingsRes.ok ? await settingsRes.json() : {};
+    const projects = projectsRes.ok ? await projectsRes.json() : [];
+    const testimonials = testimonialsRes.ok ? await testimonialsRes.json() : [];
+    const pricing = pricingRes.ok ? await pricingRes.json() : [];
+    const services = servicesRes.ok ? await servicesRes.json() : [];
+    const stats = statsRes.ok ? await statsRes.json() : [];
+
+    // Convert string-based booleans to actual boolean types
+    const parsedSettings: Record<string, any> = {};
+    Object.keys(settings).forEach(key => {
+      const val = settings[key];
+      if (val === 'true') {
+        parsedSettings[key] = true;
+      } else if (val === 'false') {
+        parsedSettings[key] = false;
+      } else {
+        parsedSettings[key] = val;
+      }
+    });
+
+    // Parse projects tags from stringified JSON if needed
+    const parsedProjects = Array.isArray(projects)
+      ? projects.map((p: any) => ({
+          ...p,
+          tags: typeof p.tags === 'string' ? JSON.parse(p.tags) : p.tags,
+        }))
+      : [];
+
+    // Parse pricing features from stringified JSON if needed
+    const parsedPricing = Array.isArray(pricing)
+      ? pricing.map((p: any) => ({
+          ...p,
+          features: typeof p.features === 'string' ? JSON.parse(p.features) : p.features,
+          is_popular: Boolean(p.is_popular),
+        }))
+      : [];
+
+    return {
+      settings: parsedSettings,
+      projects: parsedProjects,
+      testimonials,
+      pricing: parsedPricing,
+      services,
+      stats,
+    };
+  } catch (err) {
+    console.error("Failed to fetch home page data on server:", err);
+    return {
+      settings: {},
+      projects: [],
+      testimonials: [],
+      pricing: [],
+      services: [],
+      stats: [],
+    };
+  }
+}
+
+export default async function Home() {
+  const { settings, projects, testimonials, pricing, services, stats } = await getHomeData();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <Navbar settings={settings} />
+      <main className="flex-1">
+        {settings.section_hero_enabled !== false && <Hero settings={settings} />}
+        {settings.section_services_enabled !== false && <Services initialServices={services} />}
+        {settings.section_projects_enabled !== false && <Projects initialProjects={projects} />}
+        <Stats initialStats={stats} />
+        <Process />
+        {settings.section_pricing_enabled !== false && <Pricing initialPlans={pricing} />}
+        {settings.section_testimonials_enabled !== false && <Testimonials initialTestimonials={testimonials} />}
+        <ContactForm />
       </main>
-    </div>
+      <Footer settings={settings} />
+    </>
   );
 }
