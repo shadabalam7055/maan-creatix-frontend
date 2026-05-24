@@ -745,7 +745,7 @@ export default function ContactPage() {
             <div className="w-full h-full filter invert-[90%] hue-rotate-[180deg] brightness-[95%] contrast-[90%]">
               <iframe
                 title="Maan Creatix HQ Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55887.08440852228!2d78.42438887721215!3d28.900048526802724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390b080e5a6d11fd%3A0x77f1b07fe2fe1d55!2sAmroha%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1779628328477!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55887.08440852228!2d78.42438887721215!3d28.900048526802724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390b080e5a6d11fd%3A0x77f1b07fe2fe1d55!2sAmroha%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1779628328477!5m2!1sen!2sin" referrerpolicy="no-referrer-when-downgrade"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
