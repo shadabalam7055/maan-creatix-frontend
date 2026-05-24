@@ -367,7 +367,7 @@ export default function ContactPage() {
               <div className="w-12 h-12 rounded-xl bg-blue-500/5 border border-blue-500/15 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                 <FiPhone className="w-5 h-5" />
               </div>
-              <a href="callto:+916396566630" className="text-base font-bold text-white hover:text-blue-400 transition-colors duration-300">
+              <a href="tel:+916396566630" className="text-base font-bold text-white hover:text-blue-400 transition-colors duration-300">
                 <div className="space-y-1">
                 <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest font-heading">Call Support</h3>
                 <p className="text-base font-bold text-white">+91 6396566630</p>
