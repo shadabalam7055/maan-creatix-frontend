@@ -126,7 +126,7 @@ const fallbackContent: AboutContentData = {
 };
 
 const fallbackTimeline: TimelineItem[] = [
-  { id: 1, year: '2024', title: 'Agency Founded', description: 'Maan Creatix was born, establishing a boutique studio dedicated to premium dark digital designs and bespoke web products.', sort_order: 1 },
+  { id: 1, year: '2025', title: 'Agency Founded', description: 'Maan Creatix was born, establishing a boutique studio dedicated to premium dark digital designs and bespoke web products.', sort_order: 1 },
   { id: 2, year: '2025', title: 'Scaling Horizons', description: 'Expanded the engineering division, onboarding specialized React and Laravel developers, and scaled operations globally.', sort_order: 2 },
   { id: 3, year: '2026', title: 'Pioneering Innovation', description: 'Launched our own design-system components and fully integrated custom WebSockets and real-time dashboard controllers.', sort_order: 3 }
 ];
@@ -134,10 +134,10 @@ const fallbackTimeline: TimelineItem[] = [
 const fallbackTeam: TeamMemberItem[] = [
   {
     id: 1,
-    name: 'Aman Gupta',
-    role: 'Director & Lead Developer',
-    bio: 'Over 8 years of experience building modern Next.js and Laravel applications with complex cloud integration.',
-    skills: ['React', 'Next.js', 'Laravel', 'System Architecture'],
+    name: 'Abhijeet Singh',
+    role: 'Lead Graphic UI/UX Designer & Co-Founder',
+    bio: 'Over 4 years of experience building modern Next.js and Laravel applications with complex cloud integration.',
+    skills: ['Figma', 'UI/UX Design', 'Branding', 'Motion Design'],
     image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80',
     twitter_url: '#',
     linkedin_url: '#',
@@ -145,10 +145,10 @@ const fallbackTeam: TeamMemberItem[] = [
   },
   {
     id: 2,
-    name: 'Riya Kapoor',
-    role: 'Lead UI/UX Designer',
+    name: 'Shadab Alam',
+    role: 'Senior Backend Developer & Founder',
     bio: 'Crafting award-winning user interfaces with a focus on dark luxury aesthetics and complex design systems.',
-    skills: ['Figma', 'UI/UX Design', 'Branding', 'Motion Design'],
+    skills: ['PHP', 'Laravel', 'Database Administration', 'System Architecture'],
     image_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80',
     twitter_url: '#',
     linkedin_url: '#',
@@ -156,10 +156,10 @@ const fallbackTeam: TeamMemberItem[] = [
   },
   {
     id: 3,
-    name: 'Aria Sen',
-    role: 'Senior Frontend Engineer',
+    name: 'Harpreet Singh',
+    role: 'Senior Frontend Engineer & Co-Founder',
     bio: 'Translating beautiful pixel-perfect designs into fast, fluid interactions and micro-animations.',
-    skills: ['Framer Motion', 'TypeScript', 'Tailwind CSS', 'Next.js'],
+    skills: ['React', 'JavaScript', 'Tailwind CSS', 'Next.js'],
     image_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80',
     twitter_url: '#',
     linkedin_url: '#',
@@ -192,8 +192,8 @@ const fallbackStats: StatItem[] = [
 ];
 
 const fallbackTestimonials: TestimonialItem[] = [
-  { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: '/images/testimonials/avatar1.png' },
-  { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: '/images/testimonials/avatar2.png' }
+  // { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: '/images/testimonials/avatar1.png' },
+  // { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: '/images/testimonials/avatar2.png' }
 ];
 
 export default function AboutPage() {
@@ -291,14 +291,14 @@ export default function AboutPage() {
             {/* CTAs */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-4 pt-2">
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center text-xs font-bold px-7 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 active:scale-95 group"
               >
                 Start Your Project
                 <FiArrowRight className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="/#portfolio"
+                href="/portfolio"
                 className="inline-flex items-center justify-center text-xs font-bold px-7 py-4 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all duration-300 active:scale-95"
               >
                 Explore Our Work
@@ -769,53 +769,97 @@ export default function AboutPage() {
 
       {/* SECTION 9 — CTA SECTION */}
       <section className="py-24 relative overflow-hidden bg-[#050816]">
-        {/* Glow orbs */}
-        <div className="absolute w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-[120px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
-        
-        <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 text-center">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="glass-card rounded-3xl border border-white/5 p-12 md:p-16 shadow-2xl relative overflow-hidden space-y-8"
-          >
-            {/* Floating visual elements */}
-            <div className="absolute w-24 h-24 rounded-full bg-blue-500/20 blur-xl top-6 left-6" />
-            <div className="absolute w-32 h-32 rounded-full bg-purple-500/20 blur-xl bottom-6 right-6" />
+  {/* Glow orbs */}
+  <div className="absolute w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-[120px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
-            <div className="space-y-4 max-w-xl mx-auto">
-              <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading text-white leading-tight">
-                Let's Build Something <br />
-                <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                  Amazing Together
-                </span>
-              </h2>
-              <p className="text-sm text-slate-400 font-light leading-relaxed">
-                Connect with our specialized team to start drafting your next luxury web design, branding guide, or custom software solution today.
-              </p>
-            </div>
+  <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="glass-card rounded-3xl border border-white/5 p-12 md:p-16 shadow-2xl relative overflow-hidden space-y-8"
+    >
+      {/* Floating visual elements */}
+      <div className="absolute w-24 h-24 rounded-full bg-blue-500/20 blur-xl top-6 left-6" />
+      <div className="absolute w-32 h-32 rounded-full bg-purple-500/20 blur-xl bottom-6 right-6" />
 
-            <div className="flex flex-wrap gap-4 justify-center items-center">
-              <Link
-                href="/#contact"
-                className="inline-flex items-center justify-center text-xs font-bold px-8 py-4.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 active:scale-95 group"
-              >
-                Start Your Project
-                <FiArrowRight className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <a
-                href="https://wa.me/919876543210"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center text-xs font-bold px-8 py-4.5 bg-emerald-600/10 hover:bg-emerald-600/20 text-emerald-400 border border-emerald-500/25 rounded-full transition-all duration-300 active:scale-95"
-              >
-                <FiMessageCircle className="w-4 h-4 mr-2" />
-                Chat on WhatsApp
-              </a>
-            </div>
-          </motion.div>
+      {/* Rocket / decorative section */}
+      <div className="relative w-full max-w-[200px] mx-auto min-h-[140px] flex items-center justify-center">
+        {/* Orbit ring */}
+        <div className="absolute w-24 h-24 rounded-full border border-dashed border-purple-500/30 animate-[spin_40s_linear_infinite] flex items-center justify-center">
+          <div className="w-2.5 h-2.5 rounded-full bg-purple-400 absolute -top-1" />
         </div>
-      </section>
+
+        {/* Rocket */}
+        <motion.div
+          animate={{
+            y: [0, -12, 0],
+            rotate: [0, 2, -2, 0],
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 5,
+            ease: "easeInOut",
+          }}
+          className="text-4xl text-blue-400 filter drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]"
+        >
+          🚀
+        </motion.div>
+
+        {/* Tiny stars */}
+        <div className="absolute top-4 left-6 text-xs text-white/20 animate-pulse">
+          ✦
+        </div>
+
+        <div className="absolute bottom-8 right-4 text-xs text-white/30 animate-pulse delay-500">
+          ✦
+        </div>
+
+        <div className="absolute top-16 right-8 text-[9px] text-white/10 animate-pulse delay-1000">
+          ✦
+        </div>
+      </div>
+
+      {/* Heading */}
+      <div className="space-y-4 max-w-3xl mx-auto">
+        <h2 className="text-3xl md:text-5xl font-extrabold tracking-[-0.03em] leading-[0.95] font-heading text-white">
+          Let's Build Something
+          <br />
+          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Amazing Together
+          </span>
+        </h2>
+
+        <p className="text-sm text-slate-400 font-light leading-relaxed">
+          Connect with our specialized team to start drafting your next luxury
+          web design, branding guide, or custom software solution today.
+        </p>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex flex-wrap gap-4 justify-center items-center">
+        <Link
+          href="/contact"
+          className="inline-flex items-center justify-center text-xs font-bold px-8 py-4.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 active:scale-95 group"
+        >
+          Start Your Project
+
+          <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+        </Link>
+
+        <a
+          href="https://wa.me/917055953578"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center justify-center text-xs font-bold px-8 py-4.5 bg-emerald-600/10 hover:bg-emerald-600/20 text-emerald-400 border border-emerald-500/25 rounded-full transition-all duration-300 active:scale-95"
+        >
+          <FiMessageCircle className="w-4 h-4 mr-2" />
+          Chat on WhatsApp
+        </a>
+      </div>
+    </motion.div>
+  </div>
+</section>
 
       <Footer />
     </div>

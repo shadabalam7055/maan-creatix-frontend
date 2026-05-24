@@ -111,7 +111,7 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
       description: 'Custom Next.js & React websites built for high-performance and gorgeous user experiences.',
       icon: 'Code',
       glow_color: 'blue',
-      image: 'https://images.unsplash.com/photo-1547658719-da2b81169d42?auto=format&fit=crop&w=800&q=80',
+      image: 'https://unsplash.com/photos/monitor-showing-java-programming-OqtafYT5kTw',
       hero_title: 'Next-Gen Web Applications Custom Engineered for Scale',
       hero_description: 'We design and code fast, beautiful websites that engage users and convert. Fusing Next.js App Router with custom Tailwind styling results in blazing fast load times and clean layout animations.',
       features: [
@@ -385,9 +385,9 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
 };
 
 const fallbackTestimonials: TestimonialData[] = [
-  { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: '/images/testimonials/avatar1.png' },
-  { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: '/images/testimonials/avatar2.png' },
-  { id: 3, name: 'Vikram Singh', role: 'Founder', company: 'Foodies Hub', review: 'Their software solution helped us manage our business efficiently. Excellent work and support!', rating: 5, image_url: '/images/testimonials/avatar3.png' }
+  // { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: '/images/testimonials/avatar1.png' },
+  // { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: '/images/testimonials/avatar2.png' },
+  // { id: 3, name: 'Vikram Singh', role: 'Founder', company: 'Foodies Hub', review: 'Their software solution helped us manage our business efficiently. Excellent work and support!', rating: 5, image_url: '/images/testimonials/avatar3.png' }
 ];
 
 export default function ServiceDetailPage({ params }: { params: { slug: string } }) {
@@ -449,7 +449,7 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
       <div className="bg-[#050816] text-white min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center space-y-4">
           <div className="w-12 h-12 border-t-2 border-blue-500 rounded-full animate-spin" />
-          <span className="text-xs font-semibold text-slate-500 tracking-wider">Loading Immersive Interface...</span>
+          <span className="text-xs font-semibold text-slate-500 tracking-wider">Loading...</span>
         </div>
       </div>
     );
@@ -540,14 +540,14 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
-                href="/#contact"
+                href="/contact"
                 className={`inline-flex items-center justify-center text-xs font-bold px-7 py-4 ${btnBgClass} rounded-full text-white hover:shadow-lg transition-all duration-300 active:scale-95 group`}
               >
                 Book This Service
                 <FiArrowRight className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="#pricing"
+                href="/pricing"
                 className="inline-flex items-center justify-center text-xs font-bold px-7 py-4 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all duration-300 active:scale-95"
               >
                 View Packages
@@ -939,14 +939,14 @@ export default function ServiceDetailPage({ params }: { params: { slug: string }
 
             <div className="flex flex-wrap gap-4 justify-center items-center">
               <Link
-                href="/#contact"
+                href="/contact"
                 className={`inline-flex items-center justify-center text-xs font-bold px-7 py-4 ${btnBgClass} rounded-full text-white hover:shadow-lg transition-all duration-300 active:scale-95 group`}
               >
                 Start Your Project
                 <FiArrowRight className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="/#portfolio"
+                href="/portfolio"
                 className="inline-flex items-center justify-center text-xs font-bold px-7 py-4 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all duration-300 active:scale-95"
               >
                 View Full Work

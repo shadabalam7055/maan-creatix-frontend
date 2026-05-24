@@ -185,7 +185,7 @@ export default function Navbar({ settings: propSettings }: { settings?: any }) {
             <ThemeToggle />
             <Link
               href="/contact"
-              className="relative inline-flex items-center justify-center text-xs font-bold px-6 py-3 border border-white/10 rounded-full text-white bg-slate-950 hover:bg-white hover:text-[#050816] hover:border-white transition-all duration-300 shadow shadow-blue-500/5 group"
+              className="relative inline-flex items-center justify-center text-xs font-bold px-6 py-3 border border-white/10 rounded-full bg-white text-[#050816] hover:bg-transparent hover:text-white transition-all duration-300 shadow shadow-blue-500/5 group"
             >
               Let's Talk
               <FiArrowRight className="ml-2 group-hover:transform group-hover:translate-x-1.5 transition-transform" />

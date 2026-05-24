@@ -169,7 +169,7 @@ export default function ServicesPage() {
 
             <div className="flex flex-wrap gap-4 justify-center items-center">
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center text-xs font-bold px-7 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 active:scale-95 group animate-pulse"
               >
                 Let's Talk

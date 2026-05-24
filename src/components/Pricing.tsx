@@ -34,7 +34,7 @@ const fallbackPricing: PricingPlanItem[] = [
     id: 3,
     name: 'Premium Plan',
     subtitle: 'For advanced requirements',
-    price: '19,999',
+    price: '19,999+',
     billing_period: '/project',
     features: ['Unlimited Pages', 'Advanced Features', 'SEO & Speed Optimized', '6 Month Support', 'Premium Animations'],
     is_popular: false,

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
 import { 
   FiArrowRight, 
   FiCheck, 
@@ -72,7 +73,7 @@ const fallbackPlans: PricingPlanItem[] = [
     id: 1,
     name: 'Starter Plan',
     subtitle: 'Perfect for small projects & startups',
-    price: '2,999',
+    price: '4,999',
     billing_period: '/month',
     features: ['5 Pages Website', 'Responsive Design', 'Basic SEO', '1 Month Support'],
     is_popular: false,
@@ -81,7 +82,7 @@ const fallbackPlans: PricingPlanItem[] = [
     id: 2,
     name: 'Professional Plan',
     subtitle: 'Best for growing businesses',
-    price: '5,999',
+    price: '12,999',
     billing_period: '/month',
     features: ['15 Pages Website', 'Responsive Design', 'Advanced SEO & Schema', 'Custom Animations', '3 Months Support', 'Admin Panel Integration'],
     is_popular: true,
@@ -90,7 +91,7 @@ const fallbackPlans: PricingPlanItem[] = [
     id: 3,
     name: 'Enterprise Plan',
     subtitle: 'For advanced requirements',
-    price: '12,999',
+    price: '24,999+',
     billing_period: '/month',
     features: ['Unlimited Pages', 'E-commerce Integration', 'Bespoke Database & API', '6 Months Support', '24/7 Priority Support', 'Dedicated Project Manager'],
     is_popular: false,
@@ -106,9 +107,9 @@ const fallbackFaqs: FaqItem[] = [
 ];
 
 const fallbackTestimonials: TestimonialItem[] = [
-  { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: '/images/testimonials/avatar1.png' },
+  // { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: '/images/testimonials/avatar1.png' },
   { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: '/images/testimonials/avatar2.png' },
-  { id: 3, name: 'Vikram Singh', role: 'Founder', company: 'Foodies Hub', review: 'Their software solution helped us manage our business efficiently. Excellent work and support!', rating: 5, image_url: '/images/testimonials/avatar3.png' }
+  // { id: 3, name: 'Vikram Singh', role: 'Founder', company: 'Foodies Hub', review: 'Their software solution helped us manage our business efficiently. Excellent work and support!', rating: 5, image_url: '/images/testimonials/avatar3.png' }
 ];
 
 const technologiesList: TechItem[] = [
@@ -205,7 +206,7 @@ export default function PricingPage() {
       <div className="bg-[#050816] text-white min-h-screen flex items-center justify-center">
         <div className="flex flex-col items-center space-y-4">
           <div className="w-12 h-12 border-t-2 border-blue-500 rounded-full animate-spin" />
-          <span className="text-xs font-semibold text-slate-500 tracking-wider">Loading Pricing Tiers...</span>
+          <span className="text-xs font-semibold text-slate-500 tracking-wider">Loading...</span>
         </div>
       </div>
     );
@@ -254,7 +255,7 @@ export default function PricingPage() {
                 <FiArrowRight className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
               </a>
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center text-xs font-bold px-7 py-4 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all duration-300 active:scale-95"
               >
                 Contact Team
@@ -322,7 +323,7 @@ export default function PricingPage() {
                 <FiZap className="w-3.5 h-3.5" />
                 <span className="text-[10px] font-bold uppercase tracking-wider">Starter</span>
               </div>
-              <h4 className="text-base font-extrabold text-white font-heading">₹2,999<span className="text-[9px] text-slate-500 font-light">/mo</span></h4>
+              <h4 className="text-base font-extrabold text-white font-heading">₹4,999<span className="text-[9px] text-slate-500 font-light">/mo</span></h4>
               <p className="text-[9px] text-slate-400 leading-normal">5 Custom Pages, Responsive Design grid, SEO.</p>
             </motion.div>
 
@@ -340,7 +341,7 @@ export default function PricingPage() {
                 </div>
                 <span className="text-[7px] font-bold px-1.5 py-0.5 bg-purple-500/20 text-purple-300 rounded border border-purple-500/30 uppercase">Popular</span>
               </div>
-              <h4 className="text-base font-extrabold text-white font-heading">₹5,999<span className="text-[9px] text-slate-500 font-light">/mo</span></h4>
+              <h4 className="text-base font-extrabold text-white font-heading">₹14,999<span className="text-[9px] text-slate-500 font-light">/mo</span></h4>
               <p className="text-[9px] text-slate-400 leading-normal">15 Pages, Custom animations, Admin panel integration.</p>
             </motion.div>
           </div>
@@ -453,7 +454,7 @@ export default function PricingPage() {
 
                   <div className="pt-8 mt-8 border-t border-white/5">
                     <Link
-                      href="/#contact"
+                      href="/contact"
                       className={`w-full text-center inline-flex items-center justify-center text-xs font-bold py-3.5 px-6 rounded-xl transition-all duration-300 active:scale-[0.98] ${
                         plan.is_popular
                           ? 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white shadow-lg shadow-blue-500/10'
@@ -776,71 +777,94 @@ export default function PricingPage() {
       </section>
 
       {/* CTA SECTION */}
-      <section id="cta" className="py-28 relative overflow-hidden bg-[#050816] border-t border-white/5">
-        {/* Extreme glowing radial background */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.06)_0%,transparent_70%)] pointer-events-none" />
-        
-        {/* Glow ambient blurs */}
-        <div className="absolute w-[400px] h-[400px] bg-purple-500/10 blur-[80px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full pointer-events-none" />
+      <section
+  id="cta"
+  className="py-24 relative overflow-hidden bg-[#050816]"
+>
+  {/* Glow orbs */}
+  <div className="absolute w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-[120px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center space-y-12">
-          {/* Futuristic cosmic decorations */}
-          <div className="relative w-full max-w-[200px] mx-auto min-h-[140px] flex items-center justify-center">
-            {/* Neon planet circles */}
-            <div className="absolute w-24 h-24 rounded-full border border-dashed border-purple-500/30 animate-[spin_40s_linear_infinite] flex items-center justify-center">
-              <div className="w-2.5 h-2.5 rounded-full bg-purple-400 absolute -top-1" />
-            </div>
-            
-            {/* Glowing cosmic rocket */}
-            <motion.div
-              animate={{ 
-                y: [0, -12, 0],
-                rotate: [0, 2, -2, 0]
-              }}
-              transition={{ 
-                repeat: Infinity, 
-                duration: 5, 
-                ease: 'easeInOut' 
-              }}
-              className="text-4xl text-blue-400 filter drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]"
-            >
-              🚀
-            </motion.div>
-            
-            {/* Tiny stars */}
-            <div className="absolute top-4 left-6 text-xs text-white/20 animate-pulse">✦</div>
-            <div className="absolute bottom-8 right-4 text-xs text-white/30 animate-pulse delay-500">✦</div>
-            <div className="absolute top-16 right-8 text-[9px] text-white/10 animate-pulse delay-1000">✦</div>
-          </div>
+  <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="glass-card rounded-3xl border border-white/5 p-12 md:p-16 shadow-2xl relative overflow-hidden space-y-8"
+    >
+      {/* Floating visual elements */}
+      <div className="absolute w-24 h-24 rounded-full bg-blue-500/20 blur-xl top-6 left-6" />
+      <div className="absolute w-32 h-32 rounded-full bg-purple-500/20 blur-xl bottom-6 right-6" />
 
-          <div className="space-y-4">
-            <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading leading-tight">
-              Have A Project In Mind?<br />
-              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
-                Let’s Build Something Amazing.
-              </span>
-            </h2>
-            <p className="text-sm md:text-base text-slate-400 font-light leading-relaxed max-w-lg mx-auto">
-              Ready to take your digital presence to the next level? Get in touch and let's craft a luxury user experience together.
-            </p>
-          </div>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <Link
-              href="/#contact"
-              className="inline-flex items-center justify-center text-xs font-bold px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300 active:scale-95 group"
-            >
-              Start Your Project
-              <FiArrowRight className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link
-              href="/#contact"
-              className="inline-flex items-center justify-center text-xs font-bold px-8 py-4 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all duration-300 active:scale-95"
-            >
-              Contact Us
-            </Link>
-          </div>
+      {/* Rocket / decorative section */}
+      <div className="relative w-full max-w-[200px] mx-auto min-h-[140px] flex items-center justify-center">
+        {/* Orbit ring */}
+        <div className="absolute w-24 h-24 rounded-full border border-dashed border-purple-500/30 animate-[spin_40s_linear_infinite] flex items-center justify-center">
+          <div className="w-2.5 h-2.5 rounded-full bg-purple-400 absolute -top-1" />
         </div>
+
+        {/* Rocket */}
+        <motion.div
+          animate={{
+            y: [0, -12, 0],
+            rotate: [0, 2, -2, 0],
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 5,
+            ease: "easeInOut",
+          }}
+          className="text-4xl text-blue-400 filter drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]"
+        >
+          🚀
+        </motion.div>
+
+        {/* Tiny stars */}
+        <div className="absolute top-4 left-6 text-xs text-white/20 animate-pulse">
+          ✦
+        </div>
+        <div className="absolute bottom-8 right-4 text-xs text-white/30 animate-pulse delay-500">
+          ✦
+        </div>
+        <div className="absolute top-16 right-8 text-[9px] text-white/10 animate-pulse delay-1000">
+          ✦
+        </div>
+      </div>
+
+      {/* Heading */}
+      <div className="space-y-4 max-w-xl mx-auto">
+        <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight font-heading text-white leading-tight">
+          Have A Project In Mind?
+          <br />
+          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            Let’s Build Something Amazing.
+          </span>
+        </h2>
+
+        <p className="text-sm text-slate-400 font-light leading-relaxed">
+          Ready to take your digital presence to the next level? Get in touch
+          and let's craft a luxury user experience together.
+        </p>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex flex-wrap gap-4 justify-center items-center">
+        <Link
+          href="/#contact"
+          className="inline-flex items-center justify-center text-xs font-bold px-8 py-4.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 active:scale-95 group"
+        >
+          Start Your Project
+          <FiArrowRight className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
+        </Link>
+
+        <Link
+          href="/#contact"
+          className="inline-flex items-center justify-center text-xs font-bold px-8 py-4.5 bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10 rounded-full transition-all duration-300 active:scale-95"
+        >
+          Contact Us
+        </Link>
+      </div>
+    </motion.div>
+  </div>
       </section>
 
       <Footer />

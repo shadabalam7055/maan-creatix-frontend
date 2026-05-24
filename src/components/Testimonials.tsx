@@ -13,33 +13,33 @@ interface TestimonialItem {
 }
 
 const fallbackTestimonials: TestimonialItem[] = [
-  {
-    id: 1,
-    name: 'Rahul Sharma',
-    role: 'CEO',
-    company: 'TechNove',
-    review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!',
-    rating: 5,
-    image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80',
-  },
-  {
-    id: 2,
-    name: 'Priya Verma',
-    role: 'Marketing Head',
-    company: 'Aura Brand',
-    review: 'The designs were creative, modern and exactly what our brand needed. Great experience!',
-    rating: 5,
-    image_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80',
-  },
-  {
-    id: 3,
-    name: 'Vikram Singh',
-    role: 'Founder',
-    company: 'Foodies Hub',
-    review: 'Their software solution helped us manage our business efficiently. Excellent work and support!',
-    rating: 5,
-    image_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80',
-  },
+  // {
+  //   id: 1,
+  //   name: 'Rahul Sharma',
+  //   role: 'CEO',
+  //   company: 'TechNove',
+  //   review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!',
+  //   rating: 5,
+  //   image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80',
+  // },
+  // {
+  //   id: 2,
+  //   name: 'Priya Verma',
+  //   role: 'Marketing Head',
+  //   company: 'Aura Brand',
+  //   review: 'The designs were creative, modern and exactly what our brand needed. Great experience!',
+  //   rating: 5,
+  //   image_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80',
+  // },
+  // {
+  //   id: 3,
+  //   name: 'Vikram Singh',
+  //   role: 'Founder',
+  //   company: 'Foodies Hub',
+  //   review: 'Their software solution helped us manage our business efficiently. Excellent work and support!',
+  //   rating: 5,
+  //   image_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80',
+  // },
 ];
 
 interface TestimonialsProps {

@@ -264,7 +264,7 @@ export default function ContactPage() {
                   <FiArrowRight className="ml-2 w-4 h-4 group-hover:transform group-hover:translate-x-1 transition-transform" />
                 </a>
                 <a
-                  href="https://wa.me/919999999999"
+                  href="https://wa.me/917055953578"
                   target="_blank"
                   className="px-7 py-4 bg-white/5 border border-white/10 rounded-xl text-xs font-bold text-slate-200 hover:text-white hover:bg-white/[0.08] hover:border-white/20 transition-all duration-300 flex items-center space-x-2 active:scale-97"
                 >
@@ -395,7 +395,7 @@ export default function ContactPage() {
               </div>
               <div className="space-y-1">
                 <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest font-heading">Our Studio</h3>
-                <p className="text-base font-bold text-white">New Delhi, India</p>
+                <p className="text-base font-bold text-white">Amroha, Uttar Pradesh, India 244221</p>
                 <span className="text-[10px] text-slate-500 font-light block">Digital Agency HQ hub</span>
               </div>
             </div>
@@ -408,7 +408,7 @@ export default function ContactPage() {
               </div>
               <div className="space-y-1">
                 <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest font-heading">Active Hours</h3>
-                <p className="text-base font-bold text-white">Mon - Sat, 10am - 7pm</p>
+                <p className="text-base font-bold text-white">Mon - Sat, 10am - 7pm IST</p>
                 <span className="text-[10px] text-slate-500 font-light block">UTC+05:30 Standard Time</span>
               </div>
             </div>
@@ -489,7 +489,7 @@ export default function ContactPage() {
                         type="text"
                         value={contactName}
                         onChange={(e) => setContactName(e.target.value)}
-                        placeholder="John Doe"
+                        placeholder="Enter your name"
                         required
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors"
                       />
@@ -500,7 +500,7 @@ export default function ContactPage() {
                         type="email"
                         value={contactEmail}
                         onChange={(e) => setContactEmail(e.target.value)}
-                        placeholder="john@example.com"
+                        placeholder="abc@gmail.com"
                         required
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors"
                       />
@@ -514,7 +514,7 @@ export default function ContactPage() {
                         type="tel"
                         value={contactPhone}
                         onChange={(e) => setContactPhone(e.target.value)}
-                        placeholder="+91 99999 99999"
+                        placeholder="10 digit number"
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors"
                       />
                     </div>
@@ -532,6 +532,7 @@ export default function ContactPage() {
                         <option value="Graphic Designing">Graphic Designing</option>
                         <option value="UI/UX Designing">UI/UX Designing</option>
                         <option value="SEO Marketing">SEO & Growth Marketing</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
                     <div>
@@ -541,10 +542,10 @@ export default function ContactPage() {
                         onChange={(e) => setContactBudget(e.target.value)}
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors cursor-pointer"
                       >
-                        <option value="Under $5,000">Under $5,000</option>
-                        <option value="$5,000 - $10,000">$5,000 - $10,000</option>
-                        <option value="$10,000 - $25,000">$10,000 - $25,000</option>
-                        <option value="$25,000+">$25,000+ (Enterprise)</option>
+                        <option value="Under $5,000">Under 10,000 INR</option>
+                        <option value="$5,000 - $10,000">10,000 - 25,000 INR</option>
+                        <option value="$10,000 - $25,000">25,000 - 50,000 INR</option>
+                        <option value="$25,000+">50,000+ INR (Enterprise)</option>
                       </select>
                     </div>
                   </div>
@@ -565,7 +566,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center bg-white/[0.01] border border-white/5 p-4 rounded-2xl">
                     <div className="flex items-center space-x-2 text-xs text-slate-400">
                       <FiInfo className="text-blue-400 w-4 h-4 shrink-0" />
-                      <span>Security Validation: What is 5 + 3?</span>
+                      <span>Security Validation: What is 5 + 3 ?</span>
                     </div>
                     <div className="relative">
                       <input
@@ -610,7 +611,7 @@ export default function ContactPage() {
                         type="text"
                         value={meetingName}
                         onChange={(e) => setMeetingName(e.target.value)}
-                        placeholder="John Doe"
+                        placeholder="Enter your name"
                         required
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors"
                       />
@@ -621,7 +622,7 @@ export default function ContactPage() {
                         type="email"
                         value={meetingEmail}
                         onChange={(e) => setMeetingEmail(e.target.value)}
-                        placeholder="john@example.com"
+                        placeholder="abc@gmail.com"
                         required
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors"
                       />
@@ -635,7 +636,7 @@ export default function ContactPage() {
                         type="tel"
                         value={meetingPhone}
                         onChange={(e) => setMeetingPhone(e.target.value)}
-                        placeholder="+91 99999 99999"
+                        placeholder="10 digit number"
                         required
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 placeholder-slate-600 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors"
                       />
@@ -653,6 +654,7 @@ export default function ContactPage() {
                         <option value="Software Development">Software Development</option>
                         <option value="Graphic Designing">Graphic Designing</option>
                         <option value="UI/UX Designing">UI/UX Designing</option>
+                        <option value="Other">Other</option>
                       </select>
                     </div>
                   </div>
@@ -677,6 +679,7 @@ export default function ContactPage() {
                       >
                         <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
                         <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                        <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
                         <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
                         <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
                         <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
@@ -699,7 +702,7 @@ export default function ContactPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center bg-white/[0.01] border border-white/5 p-4 rounded-2xl">
                     <div className="flex items-center space-x-2 text-xs text-slate-400">
                       <FiInfo className="text-blue-400 w-4 h-4 shrink-0" />
-                      <span>Security Validation: What is 5 + 3?</span>
+                      <span>Security Validation: What is 5 + 3 ?</span>
                     </div>
                     <div className="relative">
                       <input
@@ -742,7 +745,7 @@ export default function ContactPage() {
             <div className="w-full h-full filter invert-[90%] hue-rotate-[180deg] brightness-[95%] contrast-[90%]">
               <iframe
                 title="Maan Creatix HQ Location Map"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.201736173003!2d77.206585!3d28.613939!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd5d0fdfb555%3A0x6b5cd827b5e40e0!2sConnaught%20Place%2C%20New%20Delhi%2C%20Delhi%2C%20India!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55887.08440852228!2d78.42438887721215!3d28.900048526802724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390b080e5a6d11fd%3A0x77f1b07fe2fe1d55!2sAmroha%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1779628328477!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
@@ -765,35 +768,35 @@ export default function ContactPage() {
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/maan_creatix?igsh=MXc1ZjZhdmZ4Ym4xOA=="
               target="_blank"
               className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 hover:border-pink-500/30 text-slate-400 hover:text-pink-400 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <FaInstagram className="w-5 h-5" />
             </a>
             <a
-              href="https://linkedin.com"
+              href="#"
               target="_blank"
               className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 hover:border-blue-500/30 text-slate-400 hover:text-blue-400 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <FaLinkedinIn className="w-5 h-5" />
             </a>
             <a
-              href="https://facebook.com"
+              href="#"
               target="_blank"
               className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 hover:border-blue-600/30 text-slate-400 hover:text-blue-600 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <FaFacebookF className="w-5 h-5" />
             </a>
             <a
-              href="https://behance.net"
+              href="#"
               target="_blank"
               className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 hover:border-blue-400/30 text-slate-400 hover:text-blue-400 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
             >
               <FaBehance className="w-5 h-5" />
             </a>
             <a
-              href="https://dribbble.com"
+              href="#"
               target="_blank"
               className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 hover:border-pink-400/30 text-slate-400 hover:text-pink-400 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
             >
@@ -850,31 +853,88 @@ export default function ContactPage() {
       </section>
 
       {/* COSMIC CTA SECTION */}
-      <section className="py-24 relative overflow-hidden bg-[#030612] border-t border-white/5">
-        {/* Glow Spheres */}
-        <div className="glow-orb glow-purple w-[400px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-5 pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.02),transparent_70%)] pointer-events-none" />
+      <section className="py-24 relative overflow-hidden bg-[#050816]">
+  {/* Main glow orb */}
+  <div className="absolute w-[500px] h-[500px] rounded-full bg-blue-500/10 blur-[120px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto px-6 relative z-10 text-center space-y-8">
-          <div className="space-y-4">
-            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-heading text-white">
-              Launch Your Product with Maan Creatix
-            </h2>
-            <p className="text-sm md:text-base text-slate-400 font-light leading-relaxed max-w-lg mx-auto">
-              Our directors, designers, and systems architects are ready. We align code templates with dynamic visual experiences.
-            </p>
-          </div>
+  <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10 text-center">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="glass-card rounded-3xl border border-white/5 p-12 md:p-16 shadow-2xl relative overflow-hidden space-y-8"
+    >
+      {/* Floating glow accents */}
+      <div className="absolute w-24 h-24 rounded-full bg-blue-500/20 blur-xl top-6 left-6" />
+      <div className="absolute w-32 h-32 rounded-full bg-purple-500/20 blur-xl bottom-6 right-6" />
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="#contact-form-block"
-              className="px-7 py-3.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-xl text-xs font-bold text-white hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300"
-            >
-              Start Consultation
-            </a>
-          </div>
+      {/* Rocket / decorative section */}
+      <div className="relative w-full max-w-[200px] mx-auto min-h-[140px] flex items-center justify-center">
+        {/* Orbit ring */}
+        <div className="absolute w-24 h-24 rounded-full border border-dashed border-purple-500/30 animate-[spin_40s_linear_infinite] flex items-center justify-center">
+          <div className="w-2.5 h-2.5 rounded-full bg-purple-400 absolute -top-1" />
         </div>
-      </section>
+
+        {/* Rocket */}
+        <motion.div
+          animate={{
+            y: [0, -12, 0],
+            rotate: [0, 2, -2, 0],
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 5,
+            ease: "easeInOut",
+          }}
+          className="text-4xl text-blue-400 filter drop-shadow-[0_0_15px_rgba(59,130,246,0.6)]"
+        >
+          🚀
+        </motion.div>
+
+        {/* Tiny stars */}
+        <div className="absolute top-4 left-6 text-xs text-white/20 animate-pulse">
+          ✦
+        </div>
+
+        <div className="absolute bottom-8 right-4 text-xs text-white/30 animate-pulse delay-500">
+          ✦
+        </div>
+
+        <div className="absolute top-16 right-8 text-[9px] text-white/10 animate-pulse delay-1000">
+          ✦
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="space-y-4 max-w-3xl mx-auto">
+        <h2 className="text-3xl md:text-5xl font-extrabold tracking-[-0.03em] leading-[0.95] font-heading text-white">
+          Launch Your Product
+          <br />
+          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+            with Maan Creatix
+          </span>
+        </h2>
+
+        <p className="text-sm text-slate-400 font-light leading-relaxed">
+          Our directors, designers, and systems architects are ready. We align
+          code templates with dynamic visual experiences.
+        </p>
+      </div>
+
+      {/* CTA */}
+      <div className="flex flex-wrap gap-4 justify-center items-center">
+        <a
+          href="#contact-form-block"
+          className="inline-flex items-center justify-center text-xs font-bold px-8 py-4.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 active:scale-95 group"
+        >
+          Start Consultation
+
+          <FiArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+        </a>
+      </div>
+    </motion.div>
+  </div>
+</section>
 
       <Footer />
     </div>
