@@ -394,10 +394,10 @@ export default function ContactPage() {
                 hello@maancreatix.com
                 </a>
 
-  <span className="text-[10px] text-slate-500 font-light block">
-    Business & general inquiries
-  </span>
-</div>
+                <span className="text-[10px] text-slate-500 font-light block">
+                  Business & general inquiries
+                </span>
+                </div>
             </div>
 
             {/* Card 3: Address */}
