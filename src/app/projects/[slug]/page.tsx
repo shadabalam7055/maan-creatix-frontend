@@ -43,6 +43,99 @@ interface ProjectItem {
   category_relation?: CategoryItem;
 }
 
+const staticProjects: ProjectItem[] = [
+  {
+    id: 1,
+    title: 'Cyberpunk Portfolio Hub',
+    slug: 'cyberpunk-portfolio-hub',
+    description: 'A premium developer dashboard featuring dark glassmorphism styling, ambient glowing borders, and Framer Motion spring actions.',
+    case_study: `The Cyberpunk Portfolio Hub was engineered to deliver a highly interactive, cinematic visual showcase for modern creators.
+
+Our primary focus was creating a premium dark theme utilizing custom glassmorphism components with soft glows. We implemented hardware-accelerated animations using Framer Motion to ensure smooth transitions on both desktop and mobile devices.
+
+We utilized Tailwind CSS to manage styling variables and constructed custom shaders to render dynamic background grid patterns. The build compiled statically with zero performance bottlenecks, securing a 99 Lighthouse performance rating.`,
+    image_url: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=80',
+    category: 'UI/UX Design',
+    tags: ['Next.js', 'TailwindCSS', 'Framer Motion'],
+    client: 'Aether Nexus',
+    duration: '2 Months',
+    completion_date: 'December 2025',
+    is_featured: true,
+  },
+  {
+    id: 2,
+    title: 'Fintech Analytics Platform',
+    slug: 'fintech-analytics-platform',
+    description: 'High-speed administrative portal with real-time telemetry graphs, dark themes, and secure JWT-based backend gateways.',
+    case_study: `Bancorp Digit required a robust, modern dashboard to view transaction telemetry, API response rates, and user counts in real-time.
+
+We designed a dark premium dashboard styled with subtle neon borders to highlight key analytics charts. The frontend connects to static JSON logs, simulating high-speed streaming data securely.
+
+We designed custom charts using Recharts, optimized database indexing protocols, and reduced client-side Javascript bundle sizes by 35% compared to their legacy portal.`,
+    image_url: 'https://images.unsplash.com/photo-1605379399642-870262d3d051?auto=format&fit=crop&w=800&q=80',
+    category: 'Web Development',
+    tags: ['React', 'Tailwind CSS', 'Chart.js'],
+    client: 'Bancorp Digit',
+    duration: '4 Months',
+    completion_date: 'January 2026',
+    is_featured: false,
+  },
+  {
+    id: 3,
+    title: 'Neon Brand Identity System',
+    slug: 'neon-brand-identity',
+    description: 'Corporate branding project utilizing futuristic visual structures, luxury color maps, and ambient visual packaging designs.',
+    case_study: `Helix Labs needed an identity system that conveyed their expertise in future tech, biology, and digital interfaces.
+
+We built a comprehensive color guideline centering on deep violet backgrounds, neon cyan accents, and clean technical typography.
+
+The package includes vector logomarks, typography rules, business templates, and responsive Figma wireframes ready for corporate distribution.`,
+    image_url: 'https://images.unsplash.com/photo-1618477388954-7852f32655ec?auto=format&fit=crop&w=800&q=80',
+    category: 'Branding',
+    tags: ['Figma', 'Illustrator', '3D Blender'],
+    client: 'Helix Labs',
+    duration: '1.5 Months',
+    completion_date: 'November 2025',
+    is_featured: false,
+  },
+  {
+    id: 4,
+    title: 'E-Commerce Website',
+    slug: 'ecommerce-website',
+    description: 'Next-generation luxury e-commerce platform with head-turning 3D transitions and blazing fast edge rendering.',
+    case_study: `Aura Shop is a premium luxury retailer who wanted to deliver an immersive, friction-free shopping experience online.
+
+We developed a client-only storefront using Next.js styled with customized glassmorphic checkout frames. Standard integrations include cart management via local browser storage and responsive payment simulations.
+
+The storefront maintains visual consistency, optimized product image lazy-loading, and zero layout shift, guaranteeing fluid user interactions.`,
+    image_url: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=800&q=80',
+    category: 'Web Development',
+    tags: ['Next.js', 'Tailwind', 'Stripe'],
+    client: 'Aura Shop',
+    duration: '3 Months',
+    completion_date: 'October 2025',
+    is_featured: false,
+  },
+  {
+    id: 5,
+    title: 'Restaurant Website',
+    slug: 'restaurant-website',
+    description: 'Delightful food ordering website with a customized checkout page, mobile responsive design, and smooth GSAP layout reveals.',
+    case_study: `Gourmet Bistro wanted a digital presence that mirrored the luxury and elegance of their physical dining experience.
+
+We built a responsive web layout styled with elegant spacing systems, dark warm palettes, and subtle animations. Customers can view menus, choose entrees, and simulate ordering with dynamic cart lists.
+
+This frontend-only platform uses Next.js and Framer Motion to display dishes with high-fidelity graphics, resulting in a 40% increase in simulated online table reservations.`,
+    image_url: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80',
+    category: 'Web Development',
+    tags: ['Next.js', 'Tailwind', 'Framer'],
+    client: 'Gourmet Bistro',
+    duration: '2.5 Months',
+    completion_date: 'February 2026',
+    is_featured: false,
+  }
+];
+
 export default function ProjectDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -58,35 +151,22 @@ export default function ProjectDetailPage() {
     setLoading(true);
     setError(false);
 
-    fetch(`http://127.0.0.1:8000/api/projects/${slug}`)
-      .then(res => {
-        if (!res.ok) throw new Error('Project not found');
-        return res.json();
-      })
-      .then(data => {
-        if (data.project) {
-          const parsedProject = {
-            ...data.project,
-            tags: typeof data.project.tags === 'string' ? JSON.parse(data.project.tags) : (Array.isArray(data.project.tags) ? data.project.tags : [])
-          };
-          setProject(parsedProject);
-
-          if (Array.isArray(data.related_projects)) {
-            const parsedRelated = data.related_projects.map((p: any) => ({
-              ...p,
-              tags: typeof p.tags === 'string' ? JSON.parse(p.tags) : (Array.isArray(p.tags) ? p.tags : [])
-            }));
-            setRelatedProjects(parsedRelated);
-          }
-        } else {
-          setError(true);
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-        setLoading(false);
-      });
+    // Look up in static projects
+    const foundProject = staticProjects.find(p => p.slug === slug);
+    if (foundProject) {
+      setProject(foundProject);
+      // Filter related projects
+      const related = staticProjects.filter(p => p.slug !== slug && p.category === foundProject.category);
+      // If none from same category, take any other
+      if (related.length === 0) {
+        setRelatedProjects(staticProjects.filter(p => p.slug !== slug).slice(0, 3));
+      } else {
+        setRelatedProjects(related.slice(0, 3));
+      }
+    } else {
+      setError(true);
+    }
+    setLoading(false);
   }, [slug]);
 
   if (loading) {

@@ -35,26 +35,11 @@ const fallbackServicesList: ServiceItem[] = [
 ];
 
 export default function ServicesPage() {
-  const [services, setServices] = useState<ServiceItem[]>(fallbackServicesList);
-  const [loading, setLoading] = useState(true);
+  const [services] = useState<ServiceItem[]>(fallbackServicesList);
+  const [loading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    fetch('http://127.0.0.1:8000/api/services')
-      .then((res) => {
-        if (!res.ok) throw new Error('API server down');
-        return res.json();
-      })
-      .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-          setServices(data);
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        // Use local fallbacks
-        setLoading(false);
-      });
+    // Client side setup only
   }, []);
 
   if (loading) {

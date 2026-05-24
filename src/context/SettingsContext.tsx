@@ -30,6 +30,7 @@ interface Settings {
   social_facebook?: string;
   social_instagram?: string;
   social_linkedin?: string;
+  social_twitter?: string;
   social_behance?: string;
   social_dribbble?: string;
   footer_copyright?: string;
@@ -49,64 +50,67 @@ interface Settings {
   section_cta_enabled?: boolean;
 }
 
+const defaultSettings: Settings = {
+  site_name: "Maan Creatix",
+  hero_badge: "WELCOME TO MAAN CREATIX",
+  hero_title: "We Build Digital Experiences That Grow Brands",
+  hero_description: "Maan Creatix is your all-in-one digital partner for web development, graphic design & custom software solutions.",
+  hero_button_primary_text: "Start Your Project",
+  hero_button_secondary_text: "Explore Projects",
+  site_logo: "/logo.png",
+  site_favicon: "/icon.png",
+  services_badge: "WHAT WE DO",
+  services_title: "Our Services",
+  services_description: "We provide end-to-end digital solutions for your business growth, combining premium aesthetics with clean architectures.",
+  pricing_badge: "OUR PRICING",
+  pricing_title: "Simple Pricing",
+  pricing_description: "Choose the perfect plan for your business needs. Flexible tiers built around your goals.",
+  testimonials_badge: "WHAT CLIENTS SAY",
+  testimonials_title: "Client Testimonials",
+  contact_badge: "CONTACT MAAN CREATIX",
+  contact_title: "Let’s Build Something Amazing Together",
+  contact_phone: "+91 6396566630",
+  contact_email: "hello@maancreatix.com",
+  contact_address: "Amroha, UP, India",
+  contact_hours: "Mon - Sat, 10AM - 7PM",
+  contact_whatsapp: "https://wa.me/917055953578",
+  social_facebook: "#",
+  social_instagram: "https://www.instagram.com/maan_creatix?igsh=MXc1ZjZhdmZ4Ym4xOA==",
+  social_linkedin: "#",
+  social_twitter: "#",
+  footer_copyright: "© 2026 Maan Creatix. All rights reserved.",
+  section_hero_enabled: true,
+  section_services_enabled: true,
+  section_projects_enabled: true,
+  section_pricing_enabled: true,
+  section_testimonials_enabled: true,
+  section_cta_enabled: true,
+};
+
 const SettingsContext = createContext<{
   settings: Settings;
   loading: boolean;
 }>({
-  settings: {},
-  loading: true,
+  settings: defaultSettings,
+  loading: false,
 });
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
-  const [settings, setSettings] = useState<Settings>({});
-  const [loading, setLoading] = useState(true);
+  const [settings] = useState<Settings>(defaultSettings);
+  const [loading] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 800);
-
-    fetch('http://127.0.0.1:8000/api/settings', { cache: 'no-store' })
-      .then(res => {
-        if (!res.ok) throw new Error('API server down');
-        return res.json();
-      })
-      .then(data => {
-        clearTimeout(timer);
-        const parsed: Settings = {};
-        // Convert string-based booleans to actual boolean types
-        Object.keys(data).forEach(key => {
-          const val = data[key];
-          if (val === 'true') {
-            parsed[key as keyof Settings] = true as any;
-          } else if (val === 'false') {
-            parsed[key as keyof Settings] = false as any;
-          } else {
-            parsed[key as keyof Settings] = val;
-          }
-        });
-
-        setSettings(parsed);
-        setLoading(false);
-
-        // Apply primary and secondary themes dynamically
-        if (parsed.theme_primary_color || parsed.theme_secondary_color) {
-          const root = document.documentElement;
-          if (parsed.theme_primary_color) {
-            root.style.setProperty('--primary-glow', parsed.theme_primary_color);
-          }
-          if (parsed.theme_secondary_color) {
-            root.style.setProperty('--secondary-glow', parsed.theme_secondary_color);
-          }
-        }
-      })
-      .catch(() => {
-        clearTimeout(timer);
-        setLoading(false);
-      });
-
-    return () => clearTimeout(timer);
-  }, []);
+    // Apply primary and secondary themes dynamically from static config
+    if (settings.theme_primary_color || settings.theme_secondary_color) {
+      const root = document.documentElement;
+      if (settings.theme_primary_color) {
+        root.style.setProperty('--primary-glow', settings.theme_primary_color);
+      }
+      if (settings.theme_secondary_color) {
+        root.style.setProperty('--secondary-glow', settings.theme_secondary_color);
+      }
+    }
+  }, [settings]);
 
   return (
     <SettingsContext.Provider value={{ settings, loading }}>

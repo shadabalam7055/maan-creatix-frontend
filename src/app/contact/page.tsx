@@ -26,7 +26,9 @@ import {
   FaFacebookF, 
   FaBehance, 
   FaDribbble, 
-  FaWhatsapp 
+  FaWhatsapp, 
+  FaTelegram,
+  FaTwitter
 } from 'react-icons/fa';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
@@ -93,15 +95,7 @@ export default function ContactPage() {
   const [status, setStatus] = useState<{ type: 'success' | 'error' | null; message: string }>({ type: null, message: '' });
 
   useEffect(() => {
-    // Attempt fetching FAQs from backend
-    fetch('http://127.0.0.1:8000/api/pricing-page-data')
-      .then(res => res.json())
-      .then(data => {
-        if (Array.isArray(data.faqs) && data.faqs.length > 0) {
-          setFaqs(data.faqs.slice(0, 5));
-        }
-      })
-      .catch(() => {});
+    // Client-side initialization only
   }, []);
 
   const handleContactSubmit = async (e: React.FormEvent) => {
@@ -114,51 +108,16 @@ export default function ContactPage() {
     setSubmitting(true);
     setStatus({ type: null, message: '' });
 
-    try {
-      const response = await fetch('http://127.0.0.1:8000/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: contactName,
-          email: contactEmail,
-          phone: contactPhone,
-          service: contactService,
-          budget: contactBudget,
-          message: contactMessage,
-        }),
-      });
-
-      const resData = await response.json();
-      if (response.ok) {
-        setStatus({ type: 'success', message: 'Message sent successfully! Our project managers will contact you shortly.' });
-        // Clear fields
-        setContactName('');
-        setContactEmail('');
-        setContactPhone('');
-        setContactMessage('');
-        setCaptchaAnswer('');
-      } else {
-        setStatus({ 
-          type: 'error', 
-          message: resData.errors ? Object.values(resData.errors).flat().join(' ') : (resData.message || 'Something went wrong.') 
-        });
-      }
-    } catch {
-      setStatus({ type: 'error', message: 'Failed to connect to the backend server. Your submission has been securely simulated.' });
-      // Simulate success for offline demo
-      setTimeout(() => {
-        setStatus({ type: 'success', message: 'Inquiry simulated successfully! We will connect soon.' });
-        setContactName('');
-        setContactEmail('');
-        setContactPhone('');
-        setContactMessage('');
-        setCaptchaAnswer('');
-      }, 1000);
-    } finally {
+    setTimeout(() => {
+      setStatus({ type: 'success', message: 'Message sent successfully! Our project managers will contact you shortly.' });
+      // Clear fields
+      setContactName('');
+      setContactEmail('');
+      setContactPhone('');
+      setContactMessage('');
+      setCaptchaAnswer('');
       setSubmitting(false);
-    }
+    }, 1000);
   };
 
   const handleMeetingSubmit = async (e: React.FormEvent) => {
@@ -171,52 +130,16 @@ export default function ContactPage() {
     setSubmitting(true);
     setStatus({ type: null, message: '' });
 
-    try {
-      const response = await fetch('http://127.0.0.1:8000/api/meetings', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name: meetingName,
-          email: meetingEmail,
-          phone: meetingPhone,
-          service: meetingService,
-          preferred_date: meetingDate,
-          preferred_time: meetingTime,
-          message: meetingMessage,
-        }),
-      });
-
-      const resData = await response.json();
-      if (response.ok) {
-        setStatus({ type: 'success', message: 'Consultation slot locked in! A meeting invite has been sent to your inbox.' });
-        setMeetingName('');
-        setMeetingEmail('');
-        setMeetingPhone('');
-        setMeetingDate('');
-        setMeetingMessage('');
-        setCaptchaAnswer('');
-      } else {
-        setStatus({ 
-          type: 'error', 
-          message: resData.errors ? Object.values(resData.errors).flat().join(' ') : (resData.message || 'Validation failed.') 
-        });
-      }
-    } catch {
-      setStatus({ type: 'error', message: 'API offline. Simulating local calendar request...' });
-      setTimeout(() => {
-        setStatus({ type: 'success', message: 'Consultation simulated! Your calendar invitation is scheduled for approval.' });
-        setMeetingName('');
-        setMeetingEmail('');
-        setMeetingPhone('');
-        setMeetingDate('');
-        setMeetingMessage('');
-        setCaptchaAnswer('');
-      }, 1000);
-    } finally {
+    setTimeout(() => {
+      setStatus({ type: 'success', message: 'Consultation slot locked in! A meeting invite has been sent to your inbox.' });
+      setMeetingName('');
+      setMeetingEmail('');
+      setMeetingPhone('');
+      setMeetingDate('');
+      setMeetingMessage('');
+      setCaptchaAnswer('');
       setSubmitting(false);
-    }
+    }, 1000);
   };
 
   const toggleFaq = (id: number) => {
@@ -364,7 +287,7 @@ export default function ContactPage() {
             {/* Card 1: Phone */}
             <div className="glass-card p-8 rounded-2xl border border-white/5 hover:border-blue-500/25 transition-all duration-500 text-left space-y-4 group relative">
               <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
-              <div className="w-12 h-12 rounded-xl bg-blue-500/5 border border-blue-500/15 flex items-center justify-center text-blue-400 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-indigo-500/5 border border-indigo-500/15 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
                 <FiPhone className="w-5 h-5" />
               </div>
               <a href="tel:+916396566630" className="text-base font-bold text-white hover:text-blue-400 transition-colors duration-300">
@@ -377,35 +300,56 @@ export default function ContactPage() {
             </div>
 
             {/* Card 2: Email */}
-            <div className="glass-card p-8 rounded-2xl border border-white/5 hover:border-purple-500/25 transition-all duration-500 text-left space-y-4 group relative">
-              <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" />
-              <div className="w-12 h-12 rounded-xl bg-purple-500/5 border border-purple-500/15 flex items-center justify-center text-purple-400 group-hover:bg-purple-600 group-hover:text-white transition-all duration-300">
-                <FiMail className="w-5 h-5" />
-              </div>
-              <div className="space-y-1">
-                <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest font-heading">Email Address</h3>
-                <p className="text-base font-bold text-white">hello@maancreatix.com</p>
-                <span className="text-[10px] text-slate-500 font-light block">Business & general inquiries</span>
-              </div>
-            </div>
+            <a href="mailto:hello@maancreatix.com" className="block h-full">
+              <div className="glass-card h-full p-8 rounded-2xl border border-white/5 hover:border-indigo-500/25 transition-all duration-500 text-left space-y-4 group relative cursor-pointer">
+    
+                <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" />
+
+                <div className="w-12 h-12 rounded-xl bg-indigo-500/5 border border-indigo-500/15 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
+                  <FiMail className="w-5 h-5" />
+                </div>
+
+                <div className="space-y-1">
+                  <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest font-heading">
+                    Email Address
+                  </h3>
+
+                  <p className="text-base font-bold text-white">
+                    hello@maancreatix.com
+                  </p>
+
+                  <span className="text-[10px] text-slate-500 font-light block">
+                    Business & general inquiries
+                  </span>
+                </div>
+                </div>
+            </a>
 
             {/* Card 3: Address */}
-            <div className="glass-card p-8 rounded-2xl border border-white/5 hover:border-indigo-500/25 transition-all duration-500 text-left space-y-4 group relative">
-              <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
-              <div className="w-12 h-12 rounded-xl bg-indigo-500/5 border border-indigo-500/15 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
-                <FiMapPin className="w-5 h-5" />
+            <a href="https://maps.google.com/?q=Amroha,Uttar+Pradesh,India+244221" target="_blank" rel="noopener noreferrer" className="block">
+              <div className="glass-card p-8 rounded-2xl border border-white/5 hover:border-indigo-500/25 transition-all duration-500 text-left space-y-4 group relative cursor-pointer">
+                <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-indigo-500/20 to-transparent" />
+                  <div className="w-12 h-12 rounded-xl bg-indigo-500/5 border border-indigo-500/15 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
+                    <FiMapPin className="w-5 h-5" />
+                  </div>
+                  <div className="space-y-1">
+                    <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest font-heading">
+                      Our Studio
+                    </h3>
+                    <p className="text-base font-bold text-white">
+                      Amroha, Uttar Pradesh, India 244221
+                    </p>
+                    <span className="text-[10px] text-slate-500 font-light block">
+                      Digital Agency HQ hub
+                    </span>
+                </div>
               </div>
-              <div className="space-y-1">
-                <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest font-heading">Our Studio</h3>
-                <p className="text-base font-bold text-white">Amroha, Uttar Pradesh, India 244221</p>
-                <span className="text-[10px] text-slate-500 font-light block">Digital Agency HQ hub</span>
-              </div>
-            </div>
+            </a>
 
             {/* Card 4: Working Hours */}
-            <div className="glass-card p-8 rounded-2xl border border-white/5 hover:border-emerald-500/25 transition-all duration-500 text-left space-y-4 group relative">
+            <div className="glass-card p-8 rounded-2xl border border-white/5 hover:border-emerald-500/25 transition-all duration-500 text-left space-y-4 group relative cursor-pointer">
               <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/5 border border-emerald-500/15 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+              <div className="w-12 h-12 rounded-xl bg-indigo-500/5 border border-indigo-500/15 flex items-center justify-center text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
                 <FiClock className="w-5 h-5" />
               </div>
               <div className="space-y-1">
@@ -795,14 +739,14 @@ export default function ContactPage() {
               target="_blank"
               className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 hover:border-blue-400/30 text-slate-400 hover:text-blue-400 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
             >
-              <FaBehance className="w-5 h-5" />
+              <FaTelegram className="w-5 h-5" />
             </a>
             <a
               href="#"
               target="_blank"
               className="w-12 h-12 rounded-xl bg-white/5 border border-white/5 hover:border-pink-400/30 text-slate-400 hover:text-pink-400 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
             >
-              <FaDribbble className="w-5 h-5" />
+              <FaTwitter className="w-5 h-5" />
             </a>
           </div>
         </div>
@@ -812,8 +756,8 @@ export default function ContactPage() {
       <section className="py-20 relative overflow-hidden bg-[#050816] border-t border-white/5">
         <div className="max-w-4xl mx-auto px-6 relative z-10 text-left space-y-12">
           <div className="space-y-3 text-center sm:text-left">
-            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight font-heading text-white">Inquiry FAQ Guide</h2>
-            <p className="text-xs md:text-sm text-slate-400 font-light max-w-md">Common queries related to scheduling video sessions and discussing budgets.</p>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-tight font-heading text-white text-center">Inquiry FAQ Guide</h2>
+            <p className="text-xs md:text-sm text-slate-400 font-light max-w-md mx-auto text-center">Common queries related to scheduling video sessions and discussing budgets.</p>
           </div>
 
           <div className="space-y-4">

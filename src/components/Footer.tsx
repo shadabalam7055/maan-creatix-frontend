@@ -124,28 +124,63 @@ export default function Footer({ settings = {} }: FooterProps) {
 
           {/* Column 4: Contact Us */}
           <div className="sm:col-span-2 lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">Contact Us</h4>
-            <ul className="space-y-3 text-xs font-medium text-slate-400">
-              <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
-                <FiPhone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span>+91 6396566630</span>
-              </li>
-              <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
-                <FiMail className="w-3.5 h-3.5 text-purple-400 shrink-0" />
-                <a href="mailto:hello@maancreatix.com" className="hover:text-blue-400 break-all text-center sm:text-left">
-                  hello@maancreatix.com
-                </a>
-              </li>
-              <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
-                <FiMapPin className="w-3.5 h-3.5 text-orange-400 shrink-0" />
-                <span className="text-center sm:text-left">Amroha, UP, India</span>
-              </li>
-              <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
-                <FiClock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span className="text-center sm:text-left">Mon - Sat, 10AM - 7PM</span>
-              </li>
-            </ul>
-          </div>
+  <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+    Contact Us
+  </h4>
+
+  <ul className="space-y-3 text-xs font-medium text-slate-400">
+
+    {/* Phone */}
+    <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
+      <a
+        href="tel:+916396566630"
+        className="flex items-center space-x-2 hover:text-blue-400 transition-colors duration-300"
+      >
+        <FiPhone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+        <span className="break-all text-center sm:text-left">
+          +91 6396566630
+        </span>
+      </a>
+    </li>
+
+    {/* Email */}
+    <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
+      <a
+        href="mailto:hello@maancreatix.com"
+        className="flex items-center space-x-2 hover:text-blue-400 transition-colors duration-300"
+      >
+        <FiMail className="w-3.5 h-3.5 text-purple-400 shrink-0" />
+        <span className="break-all text-center sm:text-left">
+          hello@maancreatix.com
+        </span>
+      </a>
+    </li>
+
+    {/* Address */}
+    <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
+      <a
+        href="https://maps.google.com/?q=Amroha,UP,India"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center space-x-2 hover:text-blue-400 transition-colors duration-300"
+      >
+        <FiMapPin className="w-3.5 h-3.5 text-orange-400 shrink-0" />
+        <span className="text-center sm:text-left">
+          Amroha, UP, India
+        </span>
+      </a>
+    </li>
+
+    {/* Timing */}
+    <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
+      <FiClock className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+      <span className="text-center sm:text-left">
+        Mon - Sat, 10AM - 7PM
+      </span>
+    </li>
+
+  </ul>
+</div>
 
         </div>
 
@@ -158,9 +193,9 @@ export default function Footer({ settings = {} }: FooterProps) {
           </div>
           
           <div className="flex space-x-4 text-slate-500">
-            <a href="/privacy" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <span>•</span>
-            <a href="/terms" className="hover:text-white transition-colors">Terms & Conditions</a>
+            <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
           </div>
         </div>
       </div>

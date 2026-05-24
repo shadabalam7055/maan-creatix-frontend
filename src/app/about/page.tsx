@@ -135,35 +135,35 @@ const fallbackTeam: TeamMemberItem[] = [
   {
     id: 1,
     name: 'Abhijeet Singh',
-    role: 'Lead Graphic UI/UX Designer & Co-Founder',
+    role: 'Graphic & UI/UX Designer ( Founder & CEO )',
     bio: 'Over 4 years of experience building modern Next.js and Laravel applications with complex cloud integration.',
     skills: ['Figma', 'UI/UX Design', 'Branding', 'Motion Design'],
-    image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80',
+    image_url: '/abhijeet.jpeg',
     twitter_url: '#',
-    linkedin_url: '#',
-    github_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/up23abhijeet?utm_source=share_via&utm_content=profile&utm_medium=member_android',
+    github_url: 'https://github.com/up23abhijeet',
   },
   {
     id: 2,
     name: 'Shadab Alam',
-    role: 'Senior Backend Developer & Founder',
-    bio: 'Crafting award-winning user interfaces with a focus on dark luxury aesthetics and complex design systems.',
+    role: 'Senior Backend Developer ( Founder & CEO )',
+    bio: 'Over 2 years of experience in building scalable backend systems with a focus on performance and security.',
     skills: ['PHP', 'Laravel', 'Database Administration', 'System Architecture'],
-    image_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80',
+    image_url: '/shadab.jpeg',
     twitter_url: '#',
-    linkedin_url: '#',
-    github_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/shadab-alam-s7055/',
+    github_url: 'https://github.com/shadabalam7055',
   },
   {
     id: 3,
     name: 'Harpreet Singh',
-    role: 'Senior Frontend Engineer & Co-Founder',
-    bio: 'Translating beautiful pixel-perfect designs into fast, fluid interactions and micro-animations.',
+    role: 'Senior Frontend Developer ( Founder & CEO )',
+    bio: 'Over 2 years of experience in translating beautiful pixel-perfect designs into fast, fluid interactions and micro-animations.',
     skills: ['React', 'JavaScript', 'Tailwind CSS', 'Next.js'],
-    image_url: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&h=150&q=80',
+    image_url: '/harpreet.jpeg',
     twitter_url: '#',
-    linkedin_url: '#',
-    github_url: '#',
+    linkedin_url: 'https://www.linkedin.com/in/harpreet-singh-38b9b03b8',
+    github_url: 'https://github.com/harpreetgill01',
   }
 ];
 
@@ -192,43 +192,21 @@ const fallbackStats: StatItem[] = [
 ];
 
 const fallbackTestimonials: TestimonialItem[] = [
-  // { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: '/images/testimonials/avatar1.png' },
-  // { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: '/images/testimonials/avatar2.png' }
+  { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80' },
+  { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80' }
 ];
 
 export default function AboutPage() {
-  const [content, setContent] = useState<AboutContentData>(fallbackContent);
-  const [timeline, setTimeline] = useState<TimelineItem[]>(fallbackTimeline);
-  const [team, setTeam] = useState<TeamMemberItem[]>(fallbackTeam);
-  const [techs, setTechs] = useState<TechItem[]>(fallbackTechs);
-  const [gallery, setGallery] = useState<GalleryItem[]>(fallbackGallery);
-  const [stats, setStats] = useState<StatItem[]>(fallbackStats);
-  const [testimonials, setTestimonials] = useState<TestimonialItem[]>(fallbackTestimonials);
+  const [content] = useState<AboutContentData>(fallbackContent);
+  const [timeline] = useState<TimelineItem[]>(fallbackTimeline);
+  const [team] = useState<TeamMemberItem[]>(fallbackTeam);
+  const [techs] = useState<TechItem[]>(fallbackTechs);
+  const [gallery] = useState<GalleryItem[]>(fallbackGallery);
+  const [stats] = useState<StatItem[]>(fallbackStats);
+  const [testimonials] = useState<TestimonialItem[]>(fallbackTestimonials);
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/about-data')
-      .then(res => {
-        if (!res.ok) throw new Error('API server down');
-        return res.json();
-      })
-      .then(data => {
-        if (data.about_content) setContent(data.about_content);
-        if (Array.isArray(data.timeline) && data.timeline.length > 0) setTimeline(data.timeline);
-        if (Array.isArray(data.team_members) && data.team_members.length > 0) {
-          const parsed = data.team_members.map((member: any) => ({
-            ...member,
-            skills: typeof member.skills === 'string' ? JSON.parse(member.skills) : member.skills
-          }));
-          setTeam(parsed);
-        }
-        if (Array.isArray(data.technologies) && data.technologies.length > 0) setTechs(data.technologies);
-        if (Array.isArray(data.workspace_gallery) && data.workspace_gallery.length > 0) setGallery(data.workspace_gallery);
-        if (Array.isArray(data.stats) && data.stats.length > 0) setStats(data.stats);
-        if (Array.isArray(data.testimonials) && data.testimonials.length > 0) setTestimonials(data.testimonials);
-      })
-      .catch(() => {
-        // Log down, using fallbacks
-      });
+    // Client-side initialization only
   }, []);
 
   const containerVariants: Variants = {
@@ -298,7 +276,7 @@ export default function AboutPage() {
                 <FiArrowRight className="ml-2 group-hover:transform group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
-                href="/portfolio"
+                href="/projects"
                 className="inline-flex items-center justify-center text-xs font-bold px-7 py-4 border border-white/10 rounded-full text-slate-300 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all duration-300 active:scale-95"
               >
                 Explore Our Work
@@ -572,7 +550,7 @@ export default function AboutPage() {
                   <img 
                     src={member.image_url} 
                     alt={member.name} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500" 
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 to-transparent opacity-60" />
                   

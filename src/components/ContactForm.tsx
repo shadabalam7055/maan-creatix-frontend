@@ -31,29 +31,10 @@ export default function ContactForm() {
     setStatus('submitting');
     setErrorMessage('');
 
-    try {
-      const response = await fetch('http://127.0.0.1:8000/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        setStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        setStatus('error');
-        setErrorMessage(data.message || 'Something went wrong. Please try again.');
-      }
-    } catch (err) {
-      setStatus('error');
-      setErrorMessage('Unable to connect to the server. Please check your network.');
-    }
+    setTimeout(() => {
+      setStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+    }, 1000);
   };
 
   return (

@@ -82,7 +82,7 @@ const fallbackPlans: PricingPlanItem[] = [
     id: 2,
     name: 'Professional Plan',
     subtitle: 'Best for growing businesses',
-    price: '12,999',
+    price: '9,999',
     billing_period: '/month',
     features: ['15 Pages Website', 'Responsive Design', 'Advanced SEO & Schema', 'Custom Animations', '3 Months Support', 'Admin Panel Integration'],
     is_popular: true,
@@ -91,7 +91,7 @@ const fallbackPlans: PricingPlanItem[] = [
     id: 3,
     name: 'Enterprise Plan',
     subtitle: 'For advanced requirements',
-    price: '24,999+',
+    price: '19,999+',
     billing_period: '/month',
     features: ['Unlimited Pages', 'E-commerce Integration', 'Bespoke Database & API', '6 Months Support', '24/7 Priority Support', 'Dedicated Project Manager'],
     is_popular: false,
@@ -107,9 +107,9 @@ const fallbackFaqs: FaqItem[] = [
 ];
 
 const fallbackTestimonials: TestimonialItem[] = [
-  // { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: '/images/testimonials/avatar1.png' },
-  { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: '/images/testimonials/avatar2.png' },
-  // { id: 3, name: 'Vikram Singh', role: 'Founder', company: 'Foodies Hub', review: 'Their software solution helped us manage our business efficiently. Excellent work and support!', rating: 5, image_url: '/images/testimonials/avatar3.png' }
+  { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80' },
+  { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80' },
+  { id: 3, name: 'Vikram Singh', role: 'Founder', company: 'Foodies Hub', review: 'Their software solution helped us manage our business efficiently. Excellent work and support!', rating: 5, image_url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80' }
 ];
 
 const technologiesList: TechItem[] = [
@@ -144,37 +144,16 @@ const comparisonMatrix = [
 ];
 
 export default function PricingPage() {
-  const [plans, setPlans] = useState<PricingPlanItem[]>(fallbackPlans);
-  const [faqs, setFaqs] = useState<FaqItem[]>(fallbackFaqs);
-  const [testimonials, setTestimonials] = useState<TestimonialItem[]>(fallbackTestimonials);
-  const [loading, setLoading] = useState(true);
+  const [plans] = useState<PricingPlanItem[]>(fallbackPlans);
+  const [faqs] = useState<FaqItem[]>(fallbackFaqs);
+  const [testimonials] = useState<TestimonialItem[]>(fallbackTestimonials);
+  const [loading] = useState(false);
   const [isYearly, setIsYearly] = useState(false);
   const [activeTestimonial, setActiveTestimonial] = useState(0);
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   useEffect(() => {
-    setLoading(true);
-    fetch('http://127.0.0.1:8000/api/pricing-page-data')
-      .then((res) => {
-        if (!res.ok) throw new Error('API server down');
-        return res.json();
-      })
-      .then((data) => {
-        if (Array.isArray(data.plans) && data.plans.length > 0) {
-          const parsedPlans = data.plans.map((p: any) => ({
-            ...p,
-            features: typeof p.features === 'string' ? JSON.parse(p.features) : p.features,
-            is_popular: Boolean(p.is_popular)
-          }));
-          setPlans(parsedPlans);
-        }
-        if (Array.isArray(data.faqs) && data.faqs.length > 0) setFaqs(data.faqs);
-        if (Array.isArray(data.testimonials) && data.testimonials.length > 0) setTestimonials(data.testimonials);
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    // Client-side execution only
   }, []);
 
   const calculateDisplayPrice = (plan: PricingPlanItem) => {

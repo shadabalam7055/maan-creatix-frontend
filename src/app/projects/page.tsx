@@ -88,34 +88,14 @@ const fallbackProjects: ProjectItem[] = [
 ];
 
 export default function ProjectsListingPage() {
-  const [projects, setProjects] = useState<ProjectItem[]>(fallbackProjects);
-  const [categories, setCategories] = useState<CategoryItem[]>(fallbackCategories);
-  const [loading, setLoading] = useState(true);
+  const [projects] = useState<ProjectItem[]>(fallbackProjects);
+  const [categories] = useState<CategoryItem[]>(fallbackCategories);
+  const [loading] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
 
   useEffect(() => {
-    setLoading(true);
-    // Fetch categories and projects in parallel
-    Promise.all([
-      fetch('http://127.0.0.1:8000/api/categories').then(r => r.ok ? r.json() : fallbackCategories),
-      fetch('http://127.0.0.1:8000/api/projects').then(r => r.ok ? r.json() : fallbackProjects)
-    ])
-      .then(([catsData, projsData]) => {
-        if (Array.isArray(catsData)) setCategories(catsData);
-        if (Array.isArray(projsData)) {
-          const parsed = projsData.map((item: any) => ({
-            ...item,
-            tags: typeof item.tags === 'string' ? JSON.parse(item.tags) : (Array.isArray(item.tags) ? item.tags : []),
-            is_featured: Boolean(item.is_featured)
-          }));
-          setProjects(parsed);
-        }
-        setLoading(false);
-      })
-      .catch(() => {
-        setLoading(false);
-      });
+    // Client-side initialization only
   }, []);
 
   // Filter logic
