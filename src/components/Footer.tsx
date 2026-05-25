@@ -143,6 +143,30 @@ export default function Footer({ settings = {} }: FooterProps) {
       </a>
     </li>
 
+    <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
+      <a
+        href="tel:+917055953578"
+        className="flex items-center space-x-2 hover:text-blue-400 transition-colors duration-300"
+      >
+        <FiPhone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+        <span className="break-all text-center sm:text-left">
+          +91 7055953578
+        </span>
+      </a>
+    </li>
+
+    <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
+      <a
+        href="tel:+918006835201"
+        className="flex items-center space-x-2 hover:text-blue-400 transition-colors duration-300"
+      >
+        <FiPhone className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+        <span className="break-all text-center sm:text-left">
+          +91 8006835201
+        </span>
+      </a>
+    </li>
+
     {/* Email */}
     <li className="flex items-center justify-center sm:items-start sm:justify-start space-x-2">
       <a

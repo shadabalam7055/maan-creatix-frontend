@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import emailjs from '@emailjs/browser';
+emailjs.init('ZWhLbD--rIhcB8Zvz');
 import { 
   FiMail, 
   FiPhone, 
@@ -73,17 +75,17 @@ export default function ContactPage() {
   const [contactName, setContactName] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [contactPhone, setContactPhone] = useState('');
-  const [contactService, setContactService] = useState('Website Development');
-  const [contactBudget, setContactBudget] = useState('$5,000 - $10,000');
+  const [contactService, setContactService] = useState('--Select Service--');
+  const [contactBudget, setContactBudget] = useState('--Select Budget--');
   const [contactMessage, setContactMessage] = useState('');
 
   // Meeting Form State
   const [meetingName, setMeetingName] = useState('');
   const [meetingEmail, setMeetingEmail] = useState('');
   const [meetingPhone, setMeetingPhone] = useState('');
-  const [meetingService, setMeetingService] = useState('Website Development');
+  const [meetingService, setMeetingService] = useState('--Select Service--');
   const [meetingDate, setMeetingDate] = useState('');
-  const [meetingTime, setMeetingTime] = useState('10:00 AM - 11:00 AM');
+  const [meetingTime, setMeetingTime] = useState('--Select Time Slot--');
   const [meetingMessage, setMeetingMessage] = useState('');
 
   // Bot protection state
@@ -99,48 +101,140 @@ export default function ContactPage() {
   }, []);
 
   const handleContactSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (captchaAnswer.trim() !== '8') {
-      setCaptchaError(true);
-      return;
-    }
-    setCaptchaError(false);
-    setSubmitting(true);
-    setStatus({ type: null, message: '' });
+  e.preventDefault();
 
-    setTimeout(() => {
-      setStatus({ type: 'success', message: 'Message sent successfully! Our project managers will contact you shortly.' });
-      // Clear fields
-      setContactName('');
-      setContactEmail('');
-      setContactPhone('');
-      setContactMessage('');
-      setCaptchaAnswer('');
-      setSubmitting(false);
-    }, 1000);
-  };
+  if (captchaAnswer.trim() !== '8') {
+    setCaptchaError(true);
+    return;
+  }
+
+  setCaptchaError(false);
+  setSubmitting(true);
+  setStatus({ type: null, message: '' });
+
+  try {
+
+    // OWNER KO MAIL
+    await emailjs.send(
+      'service_mqxce34',
+      'template_6rs3ayp',
+      {
+        name: contactName,
+        email: contactEmail,
+        phone: contactPhone,
+        service: contactService,
+        budget: contactBudget,
+        message: contactMessage,
+      },
+      'ZWhLbD--rIhcB8Zvz'
+    );
+
+    // USER KO AUTO REPLY
+    // await emailjs.send(
+    //   'service_mqxce34',
+    //   'template_4twnb7c',
+    //   {
+    //     name: contactName,
+    //     email: contactEmail,
+    //   },
+    //   'ZWhLbD--rIhcB8Zvz'
+    // );
+
+    setStatus({
+      type: 'success',
+      message:
+        'Message sent successfully! Our project managers will contact you shortly.',
+    });
+
+    // FULL RESET
+    setContactName('');
+    setContactEmail('');
+    setContactPhone('');
+    setContactService('--Select Service--');
+    setContactBudget('--Select Budget--');
+    setContactMessage('');
+    setCaptchaAnswer('');
+
+  } catch (error) {
+    console.log(error);
+
+    setStatus({
+      type: 'error',
+      message: 'Failed to send message.',
+    });
+  }
+
+  setSubmitting(false);
+};
 
   const handleMeetingSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (captchaAnswer.trim() !== '8') {
-      setCaptchaError(true);
-      return;
-    }
-    setCaptchaError(false);
-    setSubmitting(true);
-    setStatus({ type: null, message: '' });
+  e.preventDefault();
 
-    setTimeout(() => {
-      setStatus({ type: 'success', message: 'Consultation slot locked in! A meeting invite has been sent to your inbox.' });
-      setMeetingName('');
-      setMeetingEmail('');
-      setMeetingPhone('');
-      setMeetingDate('');
-      setMeetingMessage('');
-      setCaptchaAnswer('');
-      setSubmitting(false);
-    }, 1000);
-  };
+  if (captchaAnswer.trim() !== '8') {
+    setCaptchaError(true);
+    return;
+  }
+
+  setCaptchaError(false);
+  setSubmitting(true);
+  setStatus({ type: null, message: '' });
+
+  try {
+
+    // OWNER KO MAIL
+    await emailjs.send(
+      'service_mqxce34',
+      'template_6rs3ayp',
+      {
+        name: meetingName,
+        email: meetingEmail,
+        phone: meetingPhone,
+        service: meetingService,
+        date: meetingDate,
+        time: meetingTime,
+        message: meetingMessage,
+      },
+      'ZWhLbD--rIhcB8Zvz'
+    );
+
+    // // USER KO AUTO REPLY
+    // await emailjs.send(
+    //   'service_mqxce34',
+    //   'template_4twnb7c',
+    //   {
+    //     name: meetingName,
+    //     email: meetingEmail,
+    //   },
+    //   'ZWhLbD--rIhcB8Zvz'
+    // );
+
+    setStatus({
+      type: 'success',
+      message:
+        'Consultation slot locked in! A meeting invite has been sent to your inbox.',
+    });
+
+    // FULL RESET
+    setMeetingName('');
+    setMeetingEmail('');
+    setMeetingPhone('');
+    setMeetingService('--Select Service--');
+    setMeetingDate('');
+    setMeetingTime('--Select Time Slot--');
+    setMeetingMessage('');
+    setCaptchaAnswer('');
+
+  } catch (error) {
+    console.log(error);
+
+    setStatus({
+      type: 'error',
+      message: 'Failed to schedule consultation.',
+    });
+  }
+
+  setSubmitting(false);
+};
 
   const toggleFaq = (id: number) => {
     setExpandedFaq(expandedFaq === id ? null : id);
@@ -471,6 +565,9 @@ export default function ContactPage() {
                         onChange={(e) => setContactService(e.target.value)}
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors cursor-pointer"
                       >
+                        <option value="--Select Service--" disabled>
+                          --Select Service--
+                        </option>
                         <option value="Website Development">Website Development</option>
                         <option value="E-Commerce Development">E-Commerce Development</option>
                         <option value="Business Website">Business Website</option>
@@ -488,10 +585,13 @@ export default function ContactPage() {
                         onChange={(e) => setContactBudget(e.target.value)}
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors cursor-pointer"
                       >
-                        <option value="Under $5,000">Under 10,000 INR</option>
-                        <option value="$5,000 - $10,000">10,000 - 25,000 INR</option>
-                        <option value="$10,000 - $25,000">25,000 - 50,000 INR</option>
-                        <option value="$25,000+">50,000+ INR (Enterprise)</option>
+                        <option value="--Select Budget--" disabled>
+                          --Select Budget--
+                        </option>
+                        <option value="Under 10,000 INR">Under 10,000 INR</option>
+                        <option value="10,000 - 25,000 INR">10,000 - 25,000 INR</option>
+                        <option value="25,000 - 50,000 INR">25,000 - 50,000 INR</option>
+                        <option value="50,000+ INR (Enterprise)">50,000+ INR (Enterprise)</option>
                       </select>
                     </div>
                   </div>
@@ -594,6 +694,9 @@ export default function ContactPage() {
                         onChange={(e) => setMeetingService(e.target.value)}
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors cursor-pointer"
                       >
+                        <option value="--Select Service--" disabled>
+                          --Select Service--
+                        </option>
                         <option value="Website Development">Website Development</option>
                         <option value="E-Commerce Development">E-Commerce Development</option>
                         <option value="Business Website">Business Website</option>
@@ -623,6 +726,9 @@ export default function ContactPage() {
                         onChange={(e) => setMeetingTime(e.target.value)}
                         className="w-full bg-slate-900 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-slate-100 focus:outline-none focus:border-blue-500/50 focus:bg-slate-950/50 transition-colors cursor-pointer"
                       >
+                        <option value="--Select Time Slot--" disabled>
+                          --Select Time Slot--
+                        </option>
                         <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
                         <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
                         <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
