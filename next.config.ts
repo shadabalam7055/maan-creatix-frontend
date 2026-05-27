@@ -29,7 +29,18 @@ const nextConfig: NextConfig = {
           },
 
           // IMPORTANT FIX
-          
+          {
+            key: "Content-Security-Policy",
+            value: `
+              default-src 'self';
+              script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:;
+              style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+              font-src 'self' https://fonts.gstatic.com data:;
+              img-src 'self' data: blob: https://images.unsplash.com;
+              connect-src 'self' https://api.emailjs.com;
+              frame-src 'self' https://www.google.com;
+            `.replace(/\n/g, ''),
+          },
 
           {
             key: "Permissions-Policy",

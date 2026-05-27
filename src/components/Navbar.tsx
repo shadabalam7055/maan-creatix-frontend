@@ -92,6 +92,71 @@ export default function Navbar({ settings: propSettings }: { settings?: any }) {
           pathname === link.href ||
           (link.href !== '/' && pathname.startsWith(link.href));
 
+          if (link.name === 'Services') {
+  const isServicesActive = pathname.startsWith('/services');
+
+  return (
+    <div
+      key={link.name}
+      className="relative group"
+    >
+      <Link
+        href="/services"
+        className={`relative px-4 py-2 text-xs font-semibold tracking-wide transition-colors flex items-center gap-1 z-10 group/nav ${
+          isServicesActive
+            ? 'text-white font-bold'
+            : 'text-slate-400 hover:text-slate-200'
+        }`}
+      >
+        Services
+
+        <svg
+          className="w-3 h-3 text-slate-500 transition-transform duration-300 group-hover:rotate-180 group-hover:text-blue-400"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2.5}
+            d="M19 9l-7 7-7-7"
+          />
+        </svg>
+
+        <span
+          className={`absolute bottom-[-2px] left-4 right-6 h-[2px] bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-transform duration-300 origin-left ${
+            isServicesActive
+              ? 'scale-x-100'
+              : 'scale-x-0 group-hover/nav:scale-x-100'
+          }`}
+        />
+      </Link>
+
+      {/* DROPDOWN */}
+      <div
+        className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[480px] bg-[#050816]/95 backdrop-blur-xl border border-blue-500/20 rounded-2xl p-5 grid grid-cols-2 gap-3 shadow-[0_0_30px_rgba(59,130,246,0.2)] z-50 transition-all duration-200 origin-top opacity-0 translate-y-2 scale-95 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100 group-hover:pointer-events-auto"
+      >
+        {servicesDropdownItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className="group/item flex flex-col p-2.5 rounded-xl hover:bg-blue-500/10 border border-transparent hover:border-blue-500/20 transition-all duration-300"
+          >
+            <span className="text-xs font-bold text-white group-hover/item:text-blue-400 transition-colors">
+              {item.name}
+            </span>
+
+            <span className="text-[10px] text-slate-400 mt-1 line-clamp-1 group-hover/item:text-slate-300 transition-colors">
+              {item.desc}
+            </span>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
         return (
           <Link
             key={link.name}
