@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.maancreatix.com/sitemap.xml
+Sitemap: https://maancreatix.com/sitemap.xml
