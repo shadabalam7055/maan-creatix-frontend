@@ -21,16 +21,19 @@ const syne = Syne({
 export const metadata: Metadata = {
   metadataBase: new URL("https://maancreatix.com"),
 
+  applicationName: "Maan Creatix",
+
   title: {
     default: "Maan Creatix | Premium Digital Agency",
     template: "%s | Maan Creatix",
   },
 
   description:
-    "Maan Creatix is a premium digital agency offering modern web development, branding, UI/UX design, and custom software solutions for ambitious businesses.",
+    "Maan Creatix is a premium digital agency specializing in modern web development, branding, UI/UX design, and custom software solutions for ambitious businesses.",
 
   keywords: [
     "Maan Creatix",
+    "Maan Creatix agency",
     "digital agency",
     "web development",
     "branding",
@@ -39,6 +42,7 @@ export const metadata: Metadata = {
     "Next.js agency",
     "premium web design",
     "graphic design",
+    "futuristic agency",
   ],
 
   authors: [{ name: "Maan Creatix" }],
@@ -47,9 +51,20 @@ export const metadata: Metadata = {
 
   publisher: "Maan Creatix",
 
+  category: "Technology",
+
   robots: {
     index: true,
     follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 
   alternates: {
@@ -70,7 +85,7 @@ export const metadata: Metadata = {
     siteName: "Maan Creatix",
     images: [
       {
-        url: "/logo.png",
+        url: "https://maancreatix.com/logo.png",
         width: 1200,
         height: 630,
         alt: "Maan Creatix",
@@ -85,7 +100,8 @@ export const metadata: Metadata = {
     title: "Maan Creatix | Premium Digital Agency",
     description:
       "Premium web development, branding, UI/UX, and software solutions.",
-    images: ["/logo.png"],
+    images: ["https://maancreatix.com/logo.png"],
+    creator: "@maancreatix",
   },
 };
 
@@ -108,6 +124,7 @@ export default async function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        {/* Theme Script */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -135,9 +152,11 @@ export default async function RootLayout({
               name: "Maan Creatix",
               url: "https://maancreatix.com",
               logo: "https://maancreatix.com/logo.png",
+              description:
+                "Premium digital agency specializing in web development, branding, UI/UX, and software solutions.",
               sameAs: [
-                "https://www.instagram.com/",
-                "https://www.linkedin.com/",
+                "https://www.instagram.com/maancreatix",
+                "https://www.linkedin.com/company/maancreatix",
               ],
             }),
           }}
