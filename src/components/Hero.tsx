@@ -34,42 +34,48 @@ export default function Hero({ settings = {} }: HeroProps) {
           </div>
 
           {/* Heading */}
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.1] font-heading text-white text-center lg:text-left animate-fade-in-up delay-200">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1] font-heading text-white text-center lg:text-left animate-fade-in-up delay-200">
             {settings.hero_title ? (
               <span>{settings.hero_title}</span>
             ) : (
               <>
-                We Build Digital <br className="hidden md:inline" />
+                Premium Web Development <br className="hidden md:inline" />
+
                 <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-indigo-400 bg-clip-text text-transparent">
-                  Experiences That <br className="hidden md:inline" />
-                  Grow Brands
+                  & Custom Software Solutions
                 </span>
+
+                <br className="hidden md:inline" />
+
+                for Modern Brands
               </>
             )}
           </h1>
 
           {/* Paragraph */}
           <p className="text-sm md:text-base text-slate-400 leading-relaxed max-w-lg font-body font-light text-center lg:text-left animate-fade-in-up delay-300">
-            {settings.hero_description || "Maan Creatix is your all-in-one digital partner for web development, graphic design & custom software solutions."}
+            {settings.hero_description || "Maan Creatix is a premium digital agency providing web development, e-commerce website development, business websites, UI/UX design, graphic designing, branding, and custom software solutions for modern businesses."}
           </p>
 
           {/* CTAs */}
-          <div className="flex flex-wrap gap-4 items-center justify-center lg:justify-start animate-fade-in-up delay-450">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center text-xs font-bold px-5 py-3 md:px-7 md:py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white active:scale-95 group premium-btn-primary animate-btn-glow"
-            >
-              {settings.hero_button_primary_text || "Start Your Project"}
-              <FiArrowRight className="ml-2 group-hover:transform group-hover:translate-x-1.5 transition-transform" />
-            </Link>
-            <Link
-              href="/projects"
-              className="inline-flex items-center justify-center text-xs font-bold px-5 py-3 md:px-7 md:py-4 border border-white/10 rounded-full text-slate-300 active:scale-95 group premium-btn-secondary"
-            >
-              {settings.hero_button_secondary_text || "Explore Projects"}
-              <FiExternalLink className="ml-2 text-slate-400 group-hover:transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
-          </div>
+          {/* CTAs */}
+            <div className="flex flex-wrap gap-4 items-center justify-center lg:justify-start animate-fade-in-up delay-450">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center text-xs font-bold px-5 py-3 md:px-7 md:py-4 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white active:scale-95 group premium-btn-primary animate-btn-glow"
+              >
+                {settings.hero_button_primary_text || "Start Your Project"}
+                <FiArrowRight className="ml-2 group-hover:translate-x-1.5 transition-transform" />
+              </Link>
+
+              <Link
+                href="/projects"
+                className="inline-flex items-center justify-center text-xs font-bold px-5 py-3 md:px-7 md:py-4 border border-white/10 rounded-full text-slate-300 active:scale-95 group premium-btn-secondary"
+              >
+                {settings.hero_button_secondary_text || "Explore Projects"}
+                <FiExternalLink className="ml-2 text-slate-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </Link>
+            </div>
 
           {/* Divider */}
           <div className="h-px bg-white/5 w-full max-w-md mx-auto lg:mx-0 animate-fade-in-up delay-600" />
@@ -80,7 +86,14 @@ export default function Hero({ settings = {} }: HeroProps) {
             <div className="flex -space-x-3.5 justify-center sm:justify-start">
               {clientAvatars.map((url, i) => (
                 <div key={i} className="w-10 h-10 rounded-full border-2 border-[#050816] overflow-hidden bg-slate-900 relative avatar-hover-trigger cursor-pointer transition-all duration-300">
-                  <Image src={url} alt="Client Avatar" fill sizes="40px" className="object-cover" />
+                  <Image
+                    src={url}
+                    alt="Happy Client of Maan Creatix"
+                    fill
+                    sizes="40px"
+                    className="object-cover"
+                    priority={i === 0}
+                  />
                 </div>
               ))}
               <div className="w-10 h-10 rounded-full border-2 border-[#050816] bg-white/5 backdrop-blur-md flex items-center justify-center text-[10px] font-bold text-slate-300 avatar-hover-trigger cursor-pointer transition-all duration-300">
