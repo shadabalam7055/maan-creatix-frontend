@@ -4,7 +4,7 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import { SettingsProvider } from "@/context/SettingsContext";
 import { Inter, Syne } from "next/font/google";
-import Script from "next/dist/client/script";
+// import Script from "next/dist/client/script";
 
 const inter = Inter({
   subsets: ["latin"],
