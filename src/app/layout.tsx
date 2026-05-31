@@ -3,6 +3,7 @@ import "./globals.css";
 import LenisProvider from "@/components/LenisProvider";
 import { SettingsProvider } from "@/context/SettingsContext";
 import { Inter, Syne } from "next/font/google";
+import Script from "next/dist/client/script";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -181,6 +182,22 @@ export default async function RootLayout({
             }}
           />
         )}
+
+        {/* Google Analytics */}
+          <Script
+            src="https://www.googletagmanager.com/gtag/js?id=G-H1N9XZKXL9"
+            strategy="afterInteractive"
+          />
+
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+            
+              gtag('config', 'G-H1N9XZKXL9');
+            `}
+          </Script>
       </head>
 
       <body className="bg-[#050816] text-[#f8fafc] min-h-full flex flex-col font-body antialiased overflow-x-hidden selection:bg-blue-500/30 selection:text-white">
