@@ -122,7 +122,7 @@ const fallbackContent: AboutContentData = {
   vision_description: 'To define the premium standard of modern dark-mode aesthetics and digital engineering. We strive to be the global benchmark of design and code excellence.',
   vision_icon: 'Target',
   history_title: 'Our Story',
-  history_description: 'Founded in 2024 by a cohort of designers and engineers, Maan Creatix emerged from a simple realization: the digital landscape had grown monotonous. We set out to disrupt the status quo by introducing a dark luxury aesthetic paired with rapid engineering frameworks.',
+  history_description: 'Founded in 2025 by a cohort of designers and engineers, Maan Creatix emerged from a simple realization: the digital landscape had grown monotonous. We set out to disrupt the status quo by introducing a dark luxury aesthetic paired with rapid engineering frameworks.',
 };
 
 const fallbackTimeline: TimelineItem[] = [
@@ -185,15 +185,15 @@ const fallbackGallery: GalleryItem[] = [
 ];
 
 const fallbackStats: StatItem[] = [
-  { id: 1, label: 'Happy Clients', value: '150+', icon: 'Users' },
-  { id: 2, label: 'Projects Completed', value: '250+', icon: 'Briefcase' },
-  { id: 3, label: 'Years Experience', value: '4+', icon: 'GraduationCap' },
+  { id: 1, label: 'Happy Clients', value: '5', icon: 'Users' },
+  { id: 2, label: 'Projects Completed', value: '5', icon: 'Briefcase' },
+  { id: 3, label: 'Years Experience', value: '1', icon: 'GraduationCap' },
   { id: 4, label: 'Client Satisfaction', value: '99%', icon: 'Award' }
 ];
 
 const fallbackTestimonials: TestimonialItem[] = [
-  { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80' },
-  { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80' }
+  // { id: 1, name: 'Rahul Sharma', role: 'CEO', company: 'TechNove', review: 'Maan Creatix delivered a fantastic website that exceeded our expectations. Highly professional and on-time delivery!', rating: 5, image_url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80' },
+  // { id: 2, name: 'Priya Verma', role: 'Marketing Head', company: 'Aura Brand', review: 'The designs were creative, modern and exactly what our brand needed. Great experience!', rating: 5, image_url: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80' }
 ];
 
 export default function AboutPage() {
@@ -322,7 +322,7 @@ export default function AboutPage() {
                     <span className="w-1.5 h-1.5 rounded-full bg-yellow-500/60" />
                     <span className="w-1.5 h-1.5 rounded-full bg-green-500/60" />
                   </div>
-                  <span className="text-[8px] text-slate-500 uppercase tracking-widest font-semibold">maan.agency</span>
+                  <span className="text-[8px] text-slate-500 uppercase tracking-widest font-semibold">Maan Creatix</span>
                 </div>
                 <div className="py-4 space-y-2 flex-1 flex flex-col justify-center">
                   <div className="h-2 w-3/4 bg-blue-500/20 rounded" />

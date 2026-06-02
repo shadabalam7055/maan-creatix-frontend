@@ -158,7 +158,7 @@ export default function Projects({ initialProjects = [] }: ProjectsProps) {
           {/* Main projects view link */}
           <div>
             <Link
-              href="/projects"
+              href="/portfolio"
               className="inline-flex items-center text-xs font-bold bg-white/5 border border-white/10 rounded-full text-white transition-all duration-300 group premium-btn-secondary py-3.5 px-6"
             >
               <span>View All Projects</span>

@@ -111,7 +111,7 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
       description: 'Custom Next.js & React websites built for high-performance and gorgeous user experiences.',
       icon: 'Code',
       glow_color: 'blue',
-      image: 'https://unsplash.com/photos/monitor-showing-java-programming-OqtafYT5kTw',
+      image: '/web-development.jpg',
       hero_title: 'Next-Gen Web Applications Custom Engineered for Scale',
       hero_description: 'We design and code fast, beautiful websites that engage users and convert. Fusing Next.js App Router with custom Tailwind styling results in blazing fast load times and clean layout animations.',
       features: [
@@ -125,12 +125,12 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
     projects: [
       {
         id: 1,
-        title: 'Web App Portal',
-        description: 'Blazing fast customer portal built with Next.js Server Components and edge caching.',
-        image_url: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80',
+        title: 'gym Management Portal',
+        description: 'A sleek, modern website for a local gym, featuring dynamic class schedules, trainer bios, and membership sign-ups.',
+        image_url: '/project-1.png',
         category: 'Web Development',
         tags: ['Next.js', 'Tailwind', 'Laravel'],
-        demo_link: '#'
+        demo_link: 'allanfitnessclub.infinityfree.me'
       }
     ],
     pricing: [
@@ -167,7 +167,7 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
       description: 'High-conversion online stores with Stripe payment integration and seamless checkouts.',
       icon: 'Monitor',
       glow_color: 'purple',
-      image: 'https://images.unsplash.com/photo-1563013544-824ae1d704d3?auto=format&fit=crop&w=800&q=80',
+      image: '/e-commerce-website.png',
       hero_title: 'Immersive Digital Commerce Built for High Conversions',
       hero_description: 'Unlock modern online selling with lightning fast checkouts, dynamic cart controls, and rich media assets that elevate your brand narrative.',
       features: [
@@ -223,7 +223,7 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
       description: 'Professional corporate websites with dynamic CMS structures to showcase authority.',
       icon: 'Briefcase',
       glow_color: 'orange',
-      image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
+      image: '/business-website.webp',
       hero_title: 'Corporate Authority Styled with Premium Visual Aesthetics',
       hero_description: 'Establish a commanding digital presence that highlights your values, case studies, and services. Perfect for consulting firms, startups, and enterprises.',
       features: [
@@ -260,7 +260,7 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
       description: 'Bespoke web applications, CRM databases, and interactive real-time control panels.',
       icon: 'Cpu',
       glow_color: 'blue',
-      image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=800&q=80',
+      image: '/software.jpg',
       hero_title: 'Bespoke Custom Software Engineered for Enterprise Workflows',
       hero_description: 'Optimize your internal processes with custom database schemas, API connections, and real-time dashboard analytics.',
       features: [
@@ -316,7 +316,7 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
       description: 'Futuristic brand books, pitch decks, vector illustrations, and gorgeous social assets.',
       icon: 'Palette',
       glow_color: 'purple',
-      image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+      image: '/graphic-designing.avif',
       hero_title: 'High-End Futuristic Visual Designs that Command Attention',
       hero_description: 'Stand out with visual identities curated by award-winning designers. We shape digital brand guides, modern typography sheets, and dark-mode pitch decks.',
       features: [
@@ -353,7 +353,7 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
       description: 'Interactive Figma mockups, user research flows, and premium high-fidelity wireframes.',
       icon: 'PenTool',
       glow_color: 'orange',
-      image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?auto=format&fit=crop&w=800&q=80',
+      image: '/ui-ux.png',
       hero_title: 'Immersive High-Fidelity UI/UX Curated in Figma',
       hero_description: 'Before writing a single line of code, we design every pixel, overlay, and scroll event. Our user flows focus on intuitive ergonomics and visual luxury.',
       features: [

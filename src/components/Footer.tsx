@@ -83,8 +83,8 @@ export default function Footer({ settings = {} }: FooterProps) {
                 </Link>
               </li>
               <li>
-                <Link href="/projects" className="hover:text-blue-400 transition-colors">
-                  Projects
+                <Link href="/portfolio" className="hover:text-blue-400 transition-colors">
+                  Portfolio
                 </Link>
               </li>
               <li>

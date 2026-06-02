@@ -186,10 +186,10 @@ export default function ProjectDetailPage() {
           <h2 className="text-3xl font-extrabold text-white font-heading">Case Study Not Found</h2>
           <p className="text-slate-400 text-sm leading-relaxed">The project you are looking for does not exist or has been removed from the platform.</p>
           <button 
-            onClick={() => router.push('/projects')}
+            onClick={() => router.push('/portfolio')}
             className="inline-flex items-center text-xs font-bold bg-white text-slate-900 px-6 py-3 rounded-full hover:bg-slate-200 transition-colors"
           >
-            <FiArrowLeft className="mr-2 w-4 h-4" /> Back to Projects
+            <FiArrowLeft className="mr-2 w-4 h-4" /> Back to Portfolio
           </button>
         </div>
         <Footer />
@@ -209,10 +209,10 @@ export default function ProjectDetailPage() {
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 space-y-6 text-left">
           {/* Back button */}
           <Link 
-            href="/projects" 
+            href="/portfolio" 
             className="inline-flex items-center text-xs text-slate-400 hover:text-white font-semibold transition-colors"
           >
-            <FiArrowLeft className="mr-1.5 w-4 h-4" /> Back to portfolio
+            <FiArrowLeft className="mr-1.5 w-4 h-4" /> Back to Portfolio
           </Link>
 
           <div className="space-y-4">

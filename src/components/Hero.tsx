@@ -69,7 +69,7 @@ export default function Hero({ settings = {} }: HeroProps) {
               </Link>
 
               <Link
-                href="/projects"
+                href="/portfolio"
                 className="inline-flex items-center justify-center text-xs font-bold px-5 py-3 md:px-7 md:py-4 border border-white/10 rounded-full text-slate-300 active:scale-95 group premium-btn-secondary"
               >
                 {settings.hero_button_secondary_text || "Explore Projects"}
