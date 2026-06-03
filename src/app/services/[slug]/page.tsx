@@ -131,6 +131,24 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
         category: 'Web Development',
         tags: ['Next.js', 'Tailwind', 'Laravel'],
         demo_link: 'allanfitnessclub.infinityfree.me'
+      },
+      {
+        id: 1,
+        title: 'Restaurant Website',
+        description: 'A stylish, responsive website for a local restaurant, showcasing menus, reservation systems, and customer reviews.',
+        image_url: '/project-2.png',
+        category: 'Web Development',
+        tags: ['Next.js', 'Tailwind', 'Laravel'],
+        demo_link: 'allanfitnessclub.infinityfree.me'
+      },
+      {
+        id: 1,
+        title: 'Spa Massage Website',
+        description: 'A calming, elegant website for a spa and massage business, featuring service listings, online booking, and customer testimonials.',
+        image_url: '/project-3.png',
+        category: 'Web Development',
+        tags: ['Next.js', 'Tailwind', 'Laravel'],
+        demo_link: 'allanfitnessclub.infinityfree.me'
       }
     ],
     pricing: [
