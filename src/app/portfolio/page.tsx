@@ -54,7 +54,7 @@ const projects: ProjectItem[] = [
     title: 'Spa & Wellness Studio',
     category: 'Spa Website',
     description:
-      'Elegant spa experience focused on smooth UI interactions, calming aesthetics and premium booking flow.',
+      'An Elegant spa experience focused on smooth UI interactions, calming aesthetics and premium booking flow.',
     image_url: '/project-3.png',
     tags: ['Luxury UI', 'Next.js', 'Animations'],
     client: 'Aura Spa',
