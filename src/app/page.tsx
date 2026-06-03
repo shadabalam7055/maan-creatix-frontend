@@ -152,20 +152,20 @@ const defaultProjects = [
 ];
 
 const defaultTestimonials = [
-  // {
-  //   id: 1,
-  //   name: "Rahul Sharma",
-  //   role: "CEO",
-  //   company: "TechNove",
+  {
+    id: 1,
+    name: "Rahul Sharma",
+    role: "CEO",
+    company: "TechNove",
 
-  //   review:
-  //     "Maan Creatix delivered a fantastic website that exceeded our expectations.",
+    review:
+      "Maan Creatix delivered a fantastic website that exceeded our expectations.",
 
-  //   rating: 5,
+    rating: 5,
 
-  //   image_url:
-  //     "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80",
-  // },
+    image_url:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80",
+  }
 
   // {
   //   id: 2,
