@@ -130,7 +130,7 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
         image_url: '/project-1.png',
         category: 'Web Development',
         tags: ['Next.js', 'Tailwind', 'Laravel'],
-        demo_link: 'allanfitnessclub.infinityfree.me'
+        demo_link: 'https://allanfitnessclub.infinityfree.me/'
       },
       {
         id: 1,
