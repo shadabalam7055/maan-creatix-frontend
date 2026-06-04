@@ -33,7 +33,7 @@ const projects: ProjectItem[] = [
     image_url: '/project-1.png',
     tags: ['Next.js', 'TailwindCSS', 'Framer Motion'],
     client: 'Allan Fitness Club',
-    live_link: 'https://gym.maancreatix.com',
+    live_link: 'https://allanfitnessclub.infinityfree.me/',
     is_featured: true,
   },
 
