@@ -212,7 +212,7 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
         id: 3,
         name: 'Startup Shop',
         subtitle: 'Stripe storefront setup',
-        price: '7,999',
+        price: '14,999',
         billing_period: '/project',
         features: ['Up to 50 Products', 'Standard shopping cart', 'Stripe payment gate', 'Mobile viewport optimization'],
         is_popular: false
@@ -221,7 +221,7 @@ const fallbackServices: Record<string, { service: ServiceData; projects: Project
         id: 4,
         name: 'Enterprise Market',
         subtitle: 'High-conversion online market',
-        price: '14,999',
+        price: '24,999+',
         billing_period: '/project',
         features: ['Unlimited products', 'Client state cart analytics', 'Stripe & PayPal keys', 'Product inventory manager', 'Dynamic discount codes'],
         is_popular: true
